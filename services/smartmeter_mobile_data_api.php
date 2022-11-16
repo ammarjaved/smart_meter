@@ -32,10 +32,11 @@ class SmartMeterApi extends connection
                 VALUES ('$status','$old_meter','$new_meter', '$phase', '$remarks', '$pic1','$pic2'
                 ,'$created_by','$installation_id');";
 
-
+          $sql1="update tbl_survey_details set installed_status='$status' where installation='$installation_id'";
         $output = array();
 
-        $result_query = pg_query($sql);
+        pg_query($sql);
+        pg_query($sql1);
         if (move_uploaded_file($before_tempname, $folder1)) {
             if (move_uploaded_file($after_tempname, $folder2)) {
                   return 'success';
