@@ -17,18 +17,20 @@ class SmartMeterApi extends connection
         $phase=$_REQUEST['phase'];
         $remarks=$_REQUEST['remarks'];
         $created_by=$_REQUEST['created_by'];
+        $installation_id=$_REQUEST['installation_id'];
         $before_pic = $_FILES["before_pic"]["name"];
         $before_tempname = $_FILES["before_pic"]["tmp_name"];
         $folder1 = "./image/" . $before_pic;
         $after_pic = $_FILES["after_pic"]["name"];
         $after_tempname = $_FILES["after_pic"]["tmp_name"];
         $folder2 = "./image/" . $after_pic;
-
+        $pic1='http://121.121.232.54:88/smart_meter/services/image/'.$before_pic;
+        $pic2= 'http://121.121.232.54:88/smart_meter/services/image/'.$after_pic;
             $sql = "INSERT INTO public.tbl_meter(
                 status, old_meter_no, new_meter_no, phase, remarks, pic_before, pic_after, 
-                created_by)
-                VALUES ('$status','$old_meter','$new_meter', '$phase', '$remarks', '$before_pic',
-                 '$after_pic','$created_by');";
+                created_by,installation_id)
+                VALUES ('$status','$old_meter','$new_meter', '$phase', '$remarks', '$pic1','$pic2'
+                ,'$created_by','$installation_id');";
 
 
         $output = array();
