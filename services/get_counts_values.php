@@ -6,9 +6,9 @@ $output = array();
 
 
 $sql1="select count(*) from tbl_survey_details";
-$sql2="select count(*) from tbl_survey_details where installation='0'";
-$sql3="select count(*) from tbl_survey_details where installation='installed'";
-$sql4="select count(*) from tbl_survey_details where installation='tras'";
+$sql2="select count(*) from tbl_survey_details where installed_status='0'";
+$sql3="select count(*) from tbl_survey_details where installed_status='Installed'";
+$sql4="select count(*) from tbl_survey_details where installed_status='TRAS'";
 
 //echo $sql1."<br/>";
 $query1=pg_query($sql1);
