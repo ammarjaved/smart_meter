@@ -31,11 +31,16 @@ else {
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
     <script type="text/javascript" src="libs/html5pano.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="node_modules/lightbox2/dist/css/lightbox.min.css">
 
     <style>
         #panorama {
             width: 400px;
             height: 400px;
+        }
+        select#py_select {
+            width: 10%;
+            display: initial;
         }
     </style>
 </head>
@@ -54,7 +59,8 @@ else {
 <!--                        <button class="btn btn-danger" onclick="getProperties('dp_panel')">Click Panel</button>-->
 <!--                        <button class="btn btn-danger" onclick="getProperties('light_panel')">Click LED</button>-->
                         <button class="btn btn-danger" onclick="uploadExcel()">UploadExcel</button>
-                        <select name="ly_select" id="py_select" class="form-group" onchange="test()">
+                        <select name="ly_select" id="py_select" class="form-control" aria-label="Default select example" onchange="test()">
+                        <option value="" hidden>Select Option</option>
 
                         </select>
                         <a href="services/logout.php" class="pull-right btn btn-danger" style="color: white; margin-top: 3px !important;">Logout</a>
@@ -69,6 +75,7 @@ else {
             </div>
 
     </nav>
+    
 <div class="container-fluid" style="padding:0 0 0 0;">
 
     <input type="file" id="excel" name="excel" style="display: none;">
@@ -227,6 +234,7 @@ else {
 <script src="scripts/map.js"></script>
 <script src="libs/typeahead.min.js"></script>
 <script type="text/javascript" src="scripts/jquery.dataTables.js"></script>
+<script src="node_modules/lightbox2/dist/js/lightbox-plus-jquery.min.js"></script>
 
 
  <div id="myDiv" style="display: none;"></div>

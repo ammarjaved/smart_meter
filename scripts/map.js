@@ -264,6 +264,12 @@ function getProperties(layer1){
     if(layer1=='site_info'){
         layer=site_info;
     }
+    if(layer1=='total_tras'){
+        layer=total_tras;
+    }
+    if(layer1=='total_installed'){
+        layer=total_installed;
+    }
     // if(layer1=='light_panel'){
     //     layer=light_panel;
     // }
@@ -292,42 +298,43 @@ function getProperties(layer1){
 
                 if(layer1=='site_info'){
                     var popupContent="<table class='table table-bordered'>" +
-                        "<tr>" +
-                        "<td>status</td>" +
-                        "<td>"+data.features[0].properties.status+"</td>" +
-                        "</tr>" +
-                        "<tr>" +
-                        "<td>old_meter_no</td>" +
-                        "<td>"+data.features[0].properties.old_meter_no+"</td>" +
-                        "</tr>" +
-                        "<tr>" +
-                        "<td>new_meter_no</td>" +
-                        "<td>"+data.features[0].new_meter_no+"</td>" +
-                        "</tr>" +
-                        "<tr>" +
-                        "<td>phase</td>" +
-                        "<td>"+data.features[0].properties.phase+"</td>" +
-                        "</tr>" +
-                        "<tr>" +
-                        "<td>remarks</td>" +
-                        "<td>"+data.features[0].properties.remarks+"</td>" +
-                        "</tr>" +
-                        "<tr>" +
-                        "<td>pic_before</td>" +
-                        "<td><img src='"+data.features[0].properties.pic_after+"' height='50'/></td>" +
-                        "</tr>" +
-                        "<tr>" +
-                        "<td>pic_after</td>" +
-                        "<td><img src='"+data.features[0].properties.pic_after+"' height='50'/></td>" +
-                        "</tr>" +
-                        "<tr>" +
-                        "<td>created_at</td>" +
-                        "<td>"+data.features[0].properties.created_at+"</td>" +
-                        "</tr>" +
-                        "<tr>" +
+                    "<tr>" +
                         "<td>installation_id</td>" +
                         "<td>"+data.features[0].properties.installation_id+"</td>" +
                         "</tr>" +
+                        "<tr>" +
+                        "<td>Status</td>" +
+                        "<td>"+data.features[0].properties.status+"</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>Old Meter no</td>" +
+                        "<td>"+data.features[0].properties.old_meter_no+"</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>New Meter no</td>" +
+                        "<td>"+data.features[0].new_meter_no+"</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>Phase</td>" +
+                        "<td>"+data.features[0].properties.phase+"</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>Remarks</td>" +
+                        "<td>"+data.features[0].properties.remarks+"</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>Pic Before</td>" +
+                        "<td><a class='example-image-link' href='"+data.features[0].properties.pic_before+"' data-lightbox='example-set' data-title='Before Pic'><img src='"+data.features[0].properties.pic_before+"' height='50'/></a></td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>Pic After</td>" +
+                        "<td><a class='example-image-link' href='"+data.features[0].properties.pic_after+"' data-lightbox='example-set' data-title='After pic'><img src='"+data.features[0].properties.pic_after+"' height='50'/></a></td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>Created at</td>" +
+                        "<td>"+data.features[0].properties.created_at+"</td>" +
+                        "</tr>" +
+                        
 
                         "</table>"
                     newMarker1 = new L.marker([data.features[0].geometry.coordinates[1],data.features[0].geometry.coordinates[0]]).addTo(map).bindPopup(popupContent).openPopup();
@@ -714,11 +721,11 @@ $(document).ready(function(){
     // getProperties('total_installed');
     // getProperties('site_info')
 
-    $('#py_select').append(`<option value="total_order">total_order</option>`);
-    $('#py_select').append(`<option value="not_installed">not_installed</option>`);
-    $('#py_select').append(`<option value="total_tras">total_tras</option>`);
-    $('#py_select').append(`<option value="total_installed">total_installed</option>`);
-    $('#py_select').append(`<option value="site_info">site_info</option>`);
+    $('#py_select').append(`<option value="total_order">Total Order</option>`);
+    $('#py_select').append(`<option value="not_installed">Not Installed</option>`);
+    $('#py_select').append(`<option value="total_tras">Total Tras</option>`);
+    $('#py_select').append(`<option value="total_installed">Total Installed</option>`);
+    $('#py_select').append(`<option value="site_info">Site Info</option>`);
 
     $("#excel").on("change", function (e) {
     var formData = new FormData();
@@ -759,8 +766,9 @@ function uploadExcel(){
 function test(){
 
    let vab;
-   vab =  $( "#py_select option:selected" ).text();
+   vab =  $( "#py_select option:selected" ).val();
     getProperties(vab)
+    // alert(vab)
 }
 
 
