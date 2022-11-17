@@ -55,6 +55,13 @@ var phase_val="";
         transparent: true
     }, {buffer: 10});
 
+    site_info = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
+        layers: 'cite:site_info',
+        format: 'image/png',
+        maxZoom: 21,
+        transparent: true
+    }, {buffer: 10});
+
 
     
 
@@ -64,8 +71,8 @@ var phase_val="";
     var map = L.map('map_div', {
         center: [3.016603, 101.858382],
         // center: [31.5204, 74.3587],
-        zoom: 8,
-        layers: [dark,total_order],
+        zoom: 10,
+        layers: [googleSat,site_info],
         attributionControl:false
     });
 	
@@ -494,10 +501,11 @@ var baseLayers = {
 };
 
 var overlays = {
+    "Site Info":site_info,
     "Not installed":not_installed,
     "Total Orders":total_order,
 	"Total Tras":total_tras,
-	"Total installed":total_installed
+	"Total installed":total_installed  
    
 };
 
