@@ -267,7 +267,7 @@ function getProperties(layer1){
     // if(layer1=='light_panel'){
     //     layer=light_panel;
     // }
-    //map.off('click');
+    map.off('click');
     map.on('click', function(e) {
        // map.off('click');
 
@@ -314,11 +314,11 @@ function getProperties(layer1){
                         "</tr>" +
                         "<tr>" +
                         "<td>pic_before</td>" +
-                        "<td><img src='>"+data.features[0].properties.pic_after+"/></td>" +
+                        "<td><img src='"+data.features[0].properties.pic_after+"' height='50'/></td>" +
                         "</tr>" +
                         "<tr>" +
                         "<td>pic_after</td>" +
-                        "<td><img src='>"+data.features[0].properties.pic_after+"/></td>" +
+                        "<td><img src='"+data.features[0].properties.pic_after+"' height='50'/></td>" +
                         "</tr>" +
                         "<tr>" +
                         "<td>created_at</td>" +
@@ -712,7 +712,13 @@ $(document).ready(function(){
     // getProperties('not_installed');
     // getProperties('total_tras');
     // getProperties('total_installed');
-    getProperties('site_info')
+    // getProperties('site_info')
+
+    $('#py_select').append(`<option value="total_order">total_order</option>`);
+    $('#py_select').append(`<option value="not_installed">not_installed</option>`);
+    $('#py_select').append(`<option value="total_tras">total_tras</option>`);
+    $('#py_select').append(`<option value="total_installed">total_installed</option>`);
+    $('#py_select').append(`<option value="site_info">site_info</option>`);
 
     $("#excel").on("change", function (e) {
     var formData = new FormData();
@@ -750,7 +756,12 @@ function uploadExcel(){
 
 
 
+function test(){
 
+   let vab;
+   vab =  $( "#py_select option:selected" ).text();
+    getProperties(vab)
+}
 
 
 

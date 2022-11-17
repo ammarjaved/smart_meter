@@ -54,6 +54,9 @@ else {
 <!--                        <button class="btn btn-danger" onclick="getProperties('dp_panel')">Click Panel</button>-->
 <!--                        <button class="btn btn-danger" onclick="getProperties('light_panel')">Click LED</button>-->
                         <button class="btn btn-danger" onclick="uploadExcel()">UploadExcel</button>
+                        <select name="ly_select" id="py_select" class="form-group" onchange="test()">
+
+                        </select>
                         <a href="services/logout.php" class="pull-right btn btn-danger" style="color: white; margin-top: 3px !important;">Logout</a>
 
                     </div>
