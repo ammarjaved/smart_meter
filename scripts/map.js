@@ -261,6 +261,9 @@ function getProperties(layer1){
     if(layer1=='not_installed'){
         layer=not_installed;
     }
+    if(layer1=='site_info'){
+        layer=site_info;
+    }
     // if(layer1=='light_panel'){
     //     layer=light_panel;
     // }
@@ -286,6 +289,51 @@ function getProperties(layer1){
             async: false,
             success: function callback(data) {
                 clearAll();
+
+                if(layer1=='site_info'){
+                    var popupContent="<table class='table table-bordered'>" +
+                        "<tr>" +
+                        "<td>status</td>" +
+                        "<td>"+data.features[0].properties.status+"</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>old_meter_no</td>" +
+                        "<td>"+data.features[0].properties.old_meter_no+"</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>new_meter_no</td>" +
+                        "<td>"+data.features[0].new_meter_no+"</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>phase</td>" +
+                        "<td>"+data.features[0].properties.phase+"</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>remarks</td>" +
+                        "<td>"+data.features[0].properties.remarks+"</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>pic_before</td>" +
+                        "<td><img src='>"+data.features[0].properties.pic_after+"/></td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>pic_after</td>" +
+                        "<td><img src='>"+data.features[0].properties.pic_after+"/></td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>created_at</td>" +
+                        "<td>"+data.features[0].properties.created_at+"</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>installation_id</td>" +
+                        "<td>"+data.features[0].properties.installation_id+"</td>" +
+                        "</tr>" +
+
+                        "</table>"
+                    newMarker1 = new L.marker([data.features[0].geometry.coordinates[1],data.features[0].geometry.coordinates[0]]).addTo(map).bindPopup(popupContent).openPopup();
+
+                }
+
                 if(layer1=='total_order'){
 
                     var popupContent="<table class='table table-bordered'>" +
@@ -660,10 +708,11 @@ function clearAll(){
 
 $(document).ready(function(){
     fillCounts();
-    getProperties('total_order');
-    getProperties('not_installed');
-    getProperties('total_tras');
-    getProperties('total_installed')
+    // getProperties('total_order');
+    // getProperties('not_installed');
+    // getProperties('total_tras');
+    // getProperties('total_installed');
+    getProperties('site_info')
 
     $("#excel").on("change", function (e) {
     var formData = new FormData();
