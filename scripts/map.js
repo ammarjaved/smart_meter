@@ -29,14 +29,14 @@ var phase_val="";
     });
 	
 
-    total_not_installed = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
-        layers: 'cite:total_installed',
+    not_installed = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
+        layers: 'cite:not_installed',
         format: 'image/png',
         maxZoom: 21,
         transparent: true
     }, {buffer: 10});
     total_order = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
-        layers: 'cite:tbl_survey_details',
+        layers: 'cite:total_order',
         format: 'image/png',
         maxZoom: 21,
         transparent: true
@@ -49,7 +49,7 @@ var phase_val="";
         transparent: true
     }, {buffer: 10});
 	total_installed_1 = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
-        layers: 'cite:total_installed_1',
+        layers: 'cite:total_installed',
         format: 'image/png',
         maxZoom: 21,
         transparent: true
@@ -251,8 +251,8 @@ function getProperties(layer1){
     if(layer1=='total_order'){
         layer=total_order;
     }
-    if(layer1=='total_not_installed'){
-        layer=total_not_installed;
+    if(layer1=='not_installed'){
+        layer=not_installed;
     }
     // if(layer1=='light_panel'){
     //     layer=light_panel;
@@ -282,18 +282,38 @@ function getProperties(layer1){
                 if(layer1=='total_order'){
 
                     var popupContent="<table class='table table-bordered'>" +
+                    "<tr>" +
+                        "<td>Device No</td>" +
+                        "<td>"+data.features[0].properties.device_no+"</td>" +
+                        "</tr>" +
                         "<tr>" +
-                        "<td>customer_name</td>" +
+                        "<td>Customer Name</td>" +
                         "<td>"+data.features[0].properties.customer_name+"</td>" +
                         "</tr>" +
                         "<tr>" +
                         "<td>Address</td>" +
                         "<td>"+data.features[0].properties.address+"</td>" +
                         "</tr>" +
+                        "<tr>" +
+                        "<td>Meter Type</td>" +
+                        "<td>"+data.features[0].properties.meter_type+"</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>Premise Type</td>" +
+                        "<td>"+data.features[0].properties.premise_type+"</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>Voltage</td>" +
+                        "<td>"+data.features[0].properties.voltage+"</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>Rate Category</td>" +
+                        "<td>"+data.features[0].properties.rate_category+"</td>" +
+                        "</tr>" +
                         "</table>"
                     newMarker1 = new L.marker([data.features[0].geometry.coordinates[1],data.features[0].geometry.coordinates[0]]).addTo(map).bindPopup(popupContent).openPopup();
                 }
-                if(layer1=='total_not_installed'){
+                if(layer1=='not_installed'){
                     var popupContent="<table class='table table-bordered'>" +
                         "<tr>" +
                         "<td>customer_name</td>" +
@@ -328,7 +348,7 @@ var baseLayers = {
 };
 
 var overlays = {
-    "Not installed":total_not_installed,
+    "Not installed":not_installed,
     "Total Orders":total_order,
 	"Total Tras":total_tras,
 	"Total installed":total_installed_1
@@ -487,7 +507,7 @@ function clearAll(){
 $(document).ready(function(){
     fillCounts();
     getProperties('total_order');
-    getProperties('total_not_installed');
+    getProperties('not_installed');
 
     $("#excel").on("change", function (e) {
     var formData = new FormData();
