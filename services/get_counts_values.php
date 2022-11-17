@@ -5,10 +5,10 @@ $output = array();
 
 
 
-$sql1="select count(*) from stree_light_panel";
-$sql2="select count(*) from stree_light_panel where type='LED'";
-$sql3="select count(*) from stree_light_panel where type='SODIUM'";   
-$sql4="select sum(watt::integer) from stree_light_panel";   
+$sql1="select count(*) from tbl_survey_details";
+$sql2="select count(*) from tbl_survey_details where installation='0'";
+$sql3="select count(*) from tbl_survey_details where installation='installed'";
+$sql4="select count(*) from tbl_survey_details where installation='tras'";
 
 //echo $sql1."<br/>";
 $query1=pg_query($sql1);
@@ -23,7 +23,7 @@ if($query1)
 }
 if($query2)
 {
-    $output['led'] = pg_fetch_all($query2);
+    $output['not_surveyed'] = pg_fetch_all($query2);
 }
 if($query3)
 {

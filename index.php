@@ -53,7 +53,7 @@ else {
                         <span class="text-uppercase font-weight-bold text-muted">smartmeter</span>
 <!--                        <button class="btn btn-danger" onclick="getProperties('dp_panel')">Click Panel</button>-->
 <!--                        <button class="btn btn-danger" onclick="getProperties('light_panel')">Click LED</button>-->
-                        <button class="btn btn-danger" onclick="clearAll()">Clear</button>
+                        <button class="btn btn-danger" onclick="uploadExcel()">UploadExcel</button>
                         <a href="services/logout.php" class="pull-right btn btn-danger" style="color: white; margin-top: 3px !important;">Logout</a>
 
                     </div>
@@ -67,7 +67,8 @@ else {
 
     </nav>
 <div class="container-fluid" style="padding:0 0 0 0;">
-   
+
+    <input type="file" id="excel" name="excel" style="display: none;">
 
     
     <div id="content">
@@ -77,7 +78,7 @@ else {
                     <div style="cursor:pointer" class="countdiv card-counter info" id="RYB">
                             <i class="fa fa-bolt"></i>
                             <span class="count-numbers" id="tryb"></span>
-                            <span class="count-name">Total Street Light</span>
+                            <span class="count-name">Total Order Received</span>
                     </div>
                 </div>	
                 <div class="col-md-3">
@@ -85,7 +86,7 @@ else {
                     <div style="cursor:pointer" class="countdiv card-counter color1" id="R">
                     <i class="fa fa-bolt"></i>
                     <span class="count-numbers" id="sred"></span>
-                    <span class="count-name">Total LED Street Light</span>
+                    <span class="count-name">Total Not Visited</span>
                     </div>
 
                 </div>
@@ -94,7 +95,7 @@ else {
                     <div style="cursor:pointer;" class=" countdiv card-counter color2" id="Y">
                         <i class="fa fa-bolt"></i>
                         <span class="count-numbers" id="syellow"></span>
-                        <span class="count-name">Total Sodium Street Light</span>
+                        <span class="count-name">Total Installed</span>
                     </div>
                 </div>
                 
@@ -102,7 +103,7 @@ else {
                     <div style="cursor:pointer" class="countdiv card-counter color3" id="B">
                         <i class="fa fa-bolt"></i>
                         <span class="count-numbers" id="sblue"></span>
-                        <span class="count-name">Total Asset Light Watt</span>
+                        <span class="count-name">Total Tras</span>
                     </div>
                 </div>
             

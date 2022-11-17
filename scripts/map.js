@@ -29,47 +29,30 @@ var phase_val="";
     });
 	
 
-    grid = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
-        layers: 'cite:5x5_sub_grid',
+    total_installed = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
+        layers: 'cite:total_installed',
+        format: 'image/png',
+        maxZoom: 21,
+        transparent: true
+    }, {buffer: 10});
+    total_order = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
+        layers: 'cite:tbl_survey_details',
         format: 'image/png',
         maxZoom: 21,
         transparent: true
     }, {buffer: 10});
 
-    boundary = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
-            layers: 'cite:boundary_bangi_east_',
-            format: 'image/png',
-            maxZoom: 21,
-            transparent: true
-        }, {buffer: 10});
+
     
-  
-    dp_panel = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/TNB/wms", {
-            layers: 'TNB:demand_point_panel',
-            format: 'image/png',
-            maxZoom: 21,
-            transparent: true
-        }, {buffer: 10});
-        
-    light_panel = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/TNB/wms", {
-            layers: '	TNB:stree_light_panel',
-            format: 'image/png',
-            maxZoom: 21,
-            transparent: true
-        }, {buffer: 10});    
-        poles_panel = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/TNB/wms", {
-            layers: 'TNB:poles_panel',
-            format: 'image/png',
-            maxZoom: 21,
-            transparent: true
-        }, {buffer: 10});    
+
+
 
         
     var map = L.map('map_div', {
         center: [3.016603, 101.858382],
         // center: [31.5204, 74.3587],
-        zoom: 12,
-        layers: [googleSat,grid,boundary,dp_panel,light_panel,poles_panel],
+        zoom: 8,
+        layers: [dark,total_installed],
         attributionControl:false
     });
 	
@@ -310,11 +293,8 @@ var baseLayers = {
 };
 
 var overlays = {
-    "5x5 Grid":grid,
-    "boundry":boundary,
-     "demand point":dp_panel,
-     "poles":poles_panel,
-     "street light":light_panel,
+    "Total installed":total_installed,
+    "Total Orders":total_order
    
 };
 
@@ -338,11 +318,11 @@ function fillCounts(){
               
                  $("#tryb").text(data.total[0].count);
            
-                 $("#sred").text(data.led[0].count);
+                 $("#sred").text(data.not_surveyed[0].count);
            
                  $("#syellow").text(data.sodium[0].count);
             
-                 $("#sblue").text(data.watt[0].sum);
+                 $("#sblue").text(data.watt[0].count);
            
             //   }
             }     
@@ -472,12 +452,35 @@ $(document).ready(function(){
     getProperties('light_panel');
     //getProperties('dp_panel');
 
+    $("#excel").on("change", function (e) {
+    var formData = new FormData();
+    formData.append('excel', $('#excel')[0].files[0]);
+
+    $.ajax({
+        url : 'services/upload_excel.php',
+        type : 'POST',
+        data : formData,
+        processData: false,  // tell jQuery not to process the data
+        contentType: false,  // tell jQuery not to set contentType
+        success : function(data) {
+            console.log(data);
+            alert(data);
+        }
+    });
+
+    });
+
+
     //getProperties()
    // getAllDemandpoints();
     
 });
 //-----------add remove geojson----------  
 
+
+function uploadExcel(){
+    $('#excel').click();
+}
 
 
 //-----------on change fp dropdown----------  
