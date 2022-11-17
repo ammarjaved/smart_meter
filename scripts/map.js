@@ -29,7 +29,7 @@ var phase_val="";
     });
 	
 
-    total_installed = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
+    total_not_installed = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
         layers: 'cite:total_installed',
         format: 'image/png',
         maxZoom: 21,
@@ -65,7 +65,7 @@ var phase_val="";
         center: [3.016603, 101.858382],
         // center: [31.5204, 74.3587],
         zoom: 8,
-        layers: [dark,total_installed],
+        layers: [dark,total_order],
         attributionControl:false
     });
 	
@@ -124,80 +124,80 @@ function preNext(status){
 
 }
 
-function activeSelectedLayerPano() {
-//alert(val)
-   // map.off('click');
-    map.on('click', function(e) {
-        //map.off('click');
-        $("#wg").html('');
-        // Build the URL for a GetFeatureInfo
-        var url = getFeatureInfoUrl(
-            map,
-            pano_layer,
-            e.latlng,
-            {
-                'info_format': 'application/json',
-                'propertyName': 'NAME,AREA_CODE,DESCRIPTIO'
-            }
-        );
-        $.ajax({
-            url: 'services/proxy.php?url='+encodeURIComponent(url),
-            dataType: 'JSON',
-            //data: data,
-            method: 'GET',
-            async: false,
-            success: function callback(data) {
-
-                //  alert(data
-                var str='<div id="window1" class="window">' +
-                    '<div class="green">' +
-                    '<p class="windowTitle">Pano Images</p>' +
-                    '</div>' +
-                    '<div class="mainWindow">' +
-                    // '<canvas id="canvas" width="400" height="480">' +
-                    // '</canvas>' +
-                    '<div id="panorama" width="400px" height="480px"></div>'+
-                    '<div class="row"><button style="margin-left: 30%;" onclick=preNext("pre") class="btn btn-success">Previous</button><button  onclick=preNext("next")  style="float: right;margin-right: 35%;" class="btn btn-success">Next</button></div>'
-
-                '</div>' +
-                '</div>'
-
-                $("#wg").html(str);
-
-
-                console.log(data)
-                if(data.features.length!=0){
-                    createWindow(1);
-                    selectedId=data.features[0].id.split('.')[1];
-                    // var canvas = document.getElementById('canvas');
-                    // var context = canvas.getContext('2d');
-                    // context.clearRect(0,0 ,canvas.width,canvas.height)
-                    //     img.src = data.features[0].properties.image_path;
-                    //     init_pano('canvas')
-                    // setTimeout(function () {
-                    //     init_pano('canvas')
-                    // },1000)
-                    pannellum.viewer('panorama', {
-                        "type": "equirectangular",
-                        "panorama": data.features[0].properties.photo,
-                        "compass": true,
-                        "autoLoad": true
-                    });
-                    if(identifyme!=''){
-                        map.removeLayer(identifyme)
-                    }
-                    identifyme = L.geoJSON(data.features[0].geometry).addTo(map);
-
-                }
-
-            }
-        });
-
-
-
-
-    });
-}
+// function activeSelectedLayerPano() {
+// //alert(val)
+//    // map.off('click');
+//     map.on('click', function(e) {
+//         //map.off('click');
+//         $("#wg").html('');
+//         // Build the URL for a GetFeatureInfo
+//         var url = getFeatureInfoUrl(
+//             map,
+//             pano_layer,
+//             e.latlng,
+//             {
+//                 'info_format': 'application/json',
+//                 'propertyName': 'NAME,AREA_CODE,DESCRIPTIO'
+//             }
+//         );
+//         $.ajax({
+//             url: 'services/proxy.php?url='+encodeURIComponent(url),
+//             dataType: 'JSON',
+//             //data: data,
+//             method: 'GET',
+//             async: false,
+//             success: function callback(data) {
+//
+//                 //  alert(data
+//                 var str='<div id="window1" class="window">' +
+//                     '<div class="green">' +
+//                     '<p class="windowTitle">Pano Images</p>' +
+//                     '</div>' +
+//                     '<div class="mainWindow">' +
+//                     // '<canvas id="canvas" width="400" height="480">' +
+//                     // '</canvas>' +
+//                     '<div id="panorama" width="400px" height="480px"></div>'+
+//                     '<div class="row"><button style="margin-left: 30%;" onclick=preNext("pre") class="btn btn-success">Previous</button><button  onclick=preNext("next")  style="float: right;margin-right: 35%;" class="btn btn-success">Next</button></div>'
+//
+//                 '</div>' +
+//                 '</div>'
+//
+//                 $("#wg").html(str);
+//
+//
+//                 console.log(data)
+//                 if(data.features.length!=0){
+//                     createWindow(1);
+//                     selectedId=data.features[0].id.split('.')[1];
+//                     // var canvas = document.getElementById('canvas');
+//                     // var context = canvas.getContext('2d');
+//                     // context.clearRect(0,0 ,canvas.width,canvas.height)
+//                     //     img.src = data.features[0].properties.image_path;
+//                     //     init_pano('canvas')
+//                     // setTimeout(function () {
+//                     //     init_pano('canvas')
+//                     // },1000)
+//                     pannellum.viewer('panorama', {
+//                         "type": "equirectangular",
+//                         "panorama": data.features[0].properties.photo,
+//                         "compass": true,
+//                         "autoLoad": true
+//                     });
+//                     if(identifyme!=''){
+//                         map.removeLayer(identifyme)
+//                     }
+//                     identifyme = L.geoJSON(data.features[0].geometry).addTo(map);
+//
+//                 }
+//
+//             }
+//         });
+//
+//
+//
+//
+//     });
+// }
 
 function getFeatureInfoUrl(map, layer, latlng, params) {
 
@@ -247,12 +247,16 @@ function getFeatureInfoUrl(map, layer, latlng, params) {
 var tempLayer='';
 function getProperties(layer1){
     var layer=''
-    if(layer1=='dp_panel'){
-        layer=dp_panel;
+
+    if(layer1=='total_order'){
+        layer=total_order;
     }
-    if(layer1=='light_panel'){
-        layer=light_panel;
+    if(layer1=='total_not_installed'){
+        layer=total_not_installed;
     }
+    // if(layer1=='light_panel'){
+    //     layer=light_panel;
+    // }
     //map.off('click');
     map.on('click', function(e) {
        // map.off('click');
@@ -274,21 +278,39 @@ function getProperties(layer1){
             method: 'GET',
             async: false,
             success: function callback(data) {
-            //   console.log(data.features[0].properties.device_id)
-                if(layer1=='dp_panel') {
-                    getdpxy(data.features[0].properties.device_id, data.features[0].geometry.coordinates[0], data.features[0].geometry.coordinates[1])
-                }else{
-                    if(tempLayer!=''){
-                        map.removeLayer(tempLayer)
-                    }
-                    var xx=e.latlng.lng
-                    var yy=e.latlng.lat
-                    tempLayer =new L.CircleMarker([yy,xx], {
-                        radius: 10,
-                        color: '#FF0000'
-                    }).addTo(map);
-                    getAllDemandpoints1(data.features[0].properties.dmd_pnt_id)
+                clearAll();
+                if(layer1=='total_order'){
+
+                    var popupContent="<table class='table table-bordered'>" +
+                        "<tr>" +
+                        "<td>customer_name</td>" +
+                        "<td>"+data.features[0].properties.customer_name+"</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>Address</td>" +
+                        "<td>"+data.features[0].properties.address+"</td>" +
+                        "</tr>" +
+                        "</table>"
+                    newMarker1 = new L.marker([data.features[0].geometry.coordinates[1],data.features[0].geometry.coordinates[0]]).addTo(map).bindPopup(popupContent).openPopup();
                 }
+                if(layer1=='total_not_installed'){
+                    var popupContent="<table class='table table-bordered'>" +
+                        "<tr>" +
+                        "<td>customer_name</td>" +
+                        "<td>"+data.features[0].properties.customer_name+"</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>Address</td>" +
+                        "<td>"+data.features[0].properties.address+"</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>State</td>" +
+                        "<td>"+data.features[0].properties.state+"</td>" +
+                        "</tr>" +
+                        "</table>"
+                    newMarker1 = new L.marker([data.features[0].geometry.coordinates[1],data.features[0].geometry.coordinates[0]]).addTo(map).bindPopup(popupContent).openPopup();
+                }
+
             }
         });
       //  $('#nonsurvedmodal').modal('show');
@@ -306,9 +328,9 @@ var baseLayers = {
 };
 
 var overlays = {
-    "Not installed":total_installed,
+    "Not installed":total_not_installed,
     "Total Orders":total_order,
-	"Total Transfer":total_tras,
+	"Total Tras":total_tras,
 	"Total installed":total_installed_1
    
 };
@@ -464,8 +486,8 @@ function clearAll(){
 
 $(document).ready(function(){
     fillCounts();
-    getProperties('light_panel');
-    //getProperties('dp_panel');
+    getProperties('total_order');
+    getProperties('total_not_installed');
 
     $("#excel").on("change", function (e) {
     var formData = new FormData();
