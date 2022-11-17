@@ -41,6 +41,19 @@ var phase_val="";
         maxZoom: 21,
         transparent: true
     }, {buffer: 10});
+	
+	total_tras = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
+        layers: 'cite:total_tras',
+        format: 'image/png',
+        maxZoom: 21,
+        transparent: true
+    }, {buffer: 10});
+	total_installed_1 = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
+        layers: 'cite:total_installed_1',
+        format: 'image/png',
+        maxZoom: 21,
+        transparent: true
+    }, {buffer: 10});
 
 
     
@@ -293,8 +306,10 @@ var baseLayers = {
 };
 
 var overlays = {
-    "Total installed":total_installed,
-    "Total Orders":total_order
+    "Not installed":total_installed,
+    "Total Orders":total_order,
+	"Total Transfer":total_tras,
+	"Total installed":total_installed_1
    
 };
 
