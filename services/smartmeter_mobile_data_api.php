@@ -19,6 +19,7 @@ class SmartMeterApi extends connection
         $lon=floatval($_REQUEST['lon']);
         $lat=floatval($_REQUEST['lat']);
         $created_by=$_REQUEST['created_by'];
+        $service_order=$_REQUEST['service_order'];
         $installation_id=$_REQUEST['installation_id'];
         $before_pic = $_FILES["before_pic"]["name"];
         $before_tempname = $_FILES["before_pic"]["tmp_name"];
@@ -30,9 +31,9 @@ class SmartMeterApi extends connection
         $pic2= 'http://121.121.232.54:88/smart_meter/services/image/'.$after_pic;
             $sql = "INSERT INTO public.tbl_meter(
                 status, old_meter_no, new_meter_no, phase, remarks, pic_before, pic_after, 
-                created_by,installation_id,latitude,longitude,geom)
+                created_by,installation_id,latitude,longitude,geom,service_order )
                 VALUES ('$status','$old_meter','$new_meter', '$phase', '$remarks', '$pic1','$pic2'
-                ,'$created_by','$installation_id',$lat,$lon,st_geomfromtext('POINT('||$lon||' '||$lat||')',4326));";
+                ,'$created_by','$installation_id',$lat,$lon,st_geomfromtext('POINT('||$lon||' '||$lat||')',4326),$service_order);";
 
           $sql1="update tbl_survey_details set installed_status='$status' where installation='$installation_id'";
         $output = array();
