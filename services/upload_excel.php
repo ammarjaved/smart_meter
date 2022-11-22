@@ -50,7 +50,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 				}
 
-				$query = "INSERT INTO tbl_survey_details( state, station, station_description, contract_acc,installation, 
+				$query = "INSERT INTO tbl_survey_details( state, station, station_description,installation, contract_acc, 
 				telephone_no, b_partner, customer_name, address, latitude, longitude, voltage_level, rate_category, 
 				installation_type, logical_device_no, device_no, device_cat, register_group, meter_installation_date, 
 				dat,controlling_device, portion, mr_unit, mru_description, ip_no, ams, amcg, landlord_tenant, 
