@@ -39,8 +39,35 @@ else {
             height: 400px;
         }
         select#py_select {
-            width: 10%;
-            display: initial;
+            margin: 25px auto;
+            width: 80%;  
+        }
+        .upload_Excel { margin: 20px 50px 17px; }
+        .dropdown-item {
+            display: block;
+            width: 100%;
+            padding: 0.25rem 1.5rem;
+            clear: both;
+            font-weight: 400;
+            color: #212529;
+            text-align: inherit;
+            white-space: nowrap;
+            background-color: transparent;
+            border: 0;
+        }
+        .btn:hover, .btn:focus,a:hover {
+            color: black;
+            text-decoration: none;
+            /* border: 0px; */
+        }
+        .dropdown {
+            display: inline-flex;
+            width: 7%;
+            position: relative;
+        }
+        #dropdownMenu2{
+            text-shadow: none;
+            background-color: transparent;
         }
     </style>
 </head>
@@ -58,23 +85,34 @@ else {
                         <span class="text-uppercase font-weight-bold text-muted">smartmeter</span>
 <!--                        <button class="btn btn-danger" onclick="getProperties('dp_panel')">Click Panel</button>-->
 <!--                        <button class="btn btn-danger" onclick="getProperties('light_panel')">Click LED</button>-->
-                        <button class="btn btn-danger" onclick="uploadExcel()">UploadExcel</button>
-                        <select name="ly_select" id="py_select" class="form-control" aria-label="Default select example" onchange="test()">
-                        <option value="" hidden>Select Option</option>
-
-                        </select>
-                        <a href="services/logout.php" class="pull-right btn btn-danger" style="color: white; margin-top: 3px !important;">Logout</a>
-
-                    </div>
-
-
-
-                   
+                        
+                    
+                        <div class="dropdown pull-right " style="margin-top: 7px;">
+                            <button class="btn btn-secondary dropdown-toggle pull-right" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Main Menu<span class="caret"></span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <a class="dropdown-item" onclick="displayUploadExcel()"><button class="dropdown-item" type="button">Upload Excel</button></a>
+                                <a class="dropdown-item" onclick="dispalySelect()"><button class="dropdown-item" type="button" >Set Attribute</button></a>
+                                <a href="services/logout.php" class="pull-right btn  dropdown-item text-dark" style="color: white; margin-top: 3px !important; border-top:1px solid #00000026; border-radius:0px">
+                                <button class="dropdown-item"> Logout</button></a>
+                            </div>
+                        </div>
+                    </div>  
                 </div>
-
             </div>
 
-    </nav>
+ </nav>
+    
+    <div class="upload_Excel" style="display: none;">
+        <span>Click on upload Button to upload Excel</span> <button class="btn btn-danger" onclick="uploadExcel()">UploadExcel</button>
+    </div>
+    
+    <div class="selcet_area" style="display: none;">
+        <select name="ly_select" id="py_select" class="form-control" aria-label="Default select example" onchange="test()">
+            <option value="" hidden>Select Option</option>
+        </select>
+    </div>
     
 <div class="container-fluid" style="padding:0 0 0 0;">
 

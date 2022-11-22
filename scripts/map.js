@@ -772,5 +772,16 @@ function test(){
 }
 
 
+//---------------MAIN MENU Dropdown-----------------
 
+function dispalySelect(){
+    var check = ($(".selcet_area").css("display")== "none") ? 'block' : 'none';
+    $(".selcet_area").css("display",check)
+    $(".upload_Excel").css("display","none")
+}
 
+function displayUploadExcel(){
+    var check = ($(".upload_Excel").css("display")== "none") ? 'block' : 'none';
+    $(".upload_Excel").css("display",check)
+    $(".selcet_area").css("display","none")
+}
