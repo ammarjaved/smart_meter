@@ -454,8 +454,8 @@ table tr:nth-child(even) {
   }  
 
   .card-counter.info{
-    background-color: #7d26cd;
-    color: #FFF;
+        background-color: #DADCF8;
+    color: #4650DD;
   }  
   .card-counter.total_counts{
     background-color: #118f26;
@@ -538,16 +538,16 @@ table tr:nth-child(even) {
   }
 
   .color1{
-    background-color: red; 
-    color: #FFF;
+    background-color: #F8D7DA;
+    color: #875757;
   }
   .color2{
-    background-color: rgb(224, 204, 17); 
-    color: #FFF;
+    background-color: #D7F0DD; 
+    color: #35B653;
   }
   .color3{
-    background-color: blue; 
-    color: #FFF;
+    background-color: #CFE2FF;
+    color: #0D6EFD;
   }
 
   

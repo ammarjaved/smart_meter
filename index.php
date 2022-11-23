@@ -148,7 +148,7 @@ else {
                 </div>
                 
                 <div class="col-md-3">
-                    <div style="cursor:pointer" class="countdiv card-counter color3" id="B">
+                    <div style="cursor:pointer" class="countdiv card-counter color3" id="B" style="background-color: #D7F0DD !important;">
                         <i class="fa fa-bolt"></i>
                         <span class="count-numbers" id="sblue"></span>
                         <span class="count-name">Total Tras</span>
