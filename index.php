@@ -92,10 +92,9 @@ else {
                                 Main Menu<span class="caret"></span>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                <a class="dropdown-item" onclick="displayUploadExcel()"><button class="dropdown-item" type="button">Upload Excel</button></a>
-                                <a class="dropdown-item" onclick="dispalySelect()"><button class="dropdown-item" type="button" >Set Attribute</button></a>
+                                <!-- <a class="dropdown-item" onclick="displayUploadExcel()"><button class="dropdown-item" type="button">Upload Excel</button></a> -->
+                                <a class="dropdown-item" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><button class="dropdown-item" type="button" >Upload Excel & attributes</button></a>
                                 <a class="dropdown-item" href="http://121.121.232.54:88/sm_dashboard/" target="_blank"><button class="dropdown-item" type="button" >SM Dashboard</button></a>
-
                                 <a href="services/logout.php" class="pull-right btn  dropdown-item text-dark" style="color: white; margin-top: 3px !important; border-top:1px solid #00000026; border-radius:0px">
                                 <button class="dropdown-item"> Logout</button></a>
                             </div>
@@ -106,16 +105,17 @@ else {
 
  </nav>
     
-    <div class="upload_Excel" style="display: none;">
-        <span>Click on upload Button to upload Excel</span> <button class="btn btn-danger" onclick="uploadExcel()">UploadExcel</button>
-    </div>
+ <div class="collapse container" id="collapseExample">
+        <div class="">
+            <span>Click on upload Button to upload Excel</span> <button class="btn btn-danger" onclick="uploadExcel()">UploadExcel</button>
+        </div>
     
-    <div class="selcet_area" style="display: none;">
-        <select name="ly_select" id="py_select" class="form-control" aria-label="Default select example" onchange="test()">
-            <option value="" hidden>Select Option</option>
-        </select>
-    </div>
-    
+        <div class="selcet_area" >
+            <select name="ly_select" id="py_select" class="form-control" aria-label="Default select example" onchange="test()">
+                <option value="" hidden>Select Option</option>
+            </select>
+        </div>
+    </div> 
 <div class="container-fluid" style="padding:0 0 0 0;">
 
     <input type="file" id="excel" name="excel" style="display: none;">

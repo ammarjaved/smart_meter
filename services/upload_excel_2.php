@@ -31,10 +31,10 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 			echo "<br><br><br>";
 	
 				for ($j=2; $j < $r_row +1; $j++) { 
-					echo $coca= "=".$sheet->getCell('A'. $j)->getValue();
+					
 
 					
-					$query = "INSERT INTO tbl_survey_details( service_order, address, latitude, longitude, voltage_level, device_no, meter_type, premise_type, station, area,geom)
+					$query = "INSERT INTO tbl_survey_details(installation, service_order, address, latitude, longitude, voltage_level, device_no, meter_type, premise_type, station, area,geom)
 						VALUES ( 
 							'".$sheet->getCell('A'. $j)->getValue()."',
 							'".$sheet->getCell('C'. $j)->getValue()."',
@@ -46,6 +46,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 						    '".$sheet->getCell('I'. $j)->getValue()."',
 							'".$sheet->getCell('J'. $j)->getValue()."',
 							'".$sheet->getCell('K'. $j)->getValue()."',
+							'".$sheet->getCell('L'. $j)->getValue()."',
 							st_geomfromtext('POINT('||".$sheet->getCell('e'. $j)->getValue()."||' '||".$sheet->getCell('d'. $j)->getValue()."||')',4326))";
 							 //echo $query;
 		                    //exit(); 
@@ -55,6 +56,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 				// exit();
 			
 		}
+		echo "Upload Successfully";
 		
 
 
