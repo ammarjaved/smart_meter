@@ -56,7 +56,7 @@ var phase_val="";
     }, {buffer: 10});
 
     site_info = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
-        layers: 'cite:site_info',
+        layers: 'cite:site_data',
         format: 'image/png',
         maxZoom: 21,
         transparent: true
