@@ -732,7 +732,7 @@ $(document).ready(function(){
     formData.append('excel', $('#excel')[0].files[0]);
 
     $.ajax({
-        url : 'services/upload_excel.php',
+        url : 'services/upload_excel_2.php',
         type : 'POST',
         data : formData,
         processData: false,  // tell jQuery not to process the data
