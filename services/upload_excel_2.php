@@ -34,7 +34,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 					echo $coca= "=".$sheet->getCell('A'. $j)->getValue();
 
 					
-					$query = "INSERT INTO tbl_survey_details( service_order, address, latitude, longitude, voltage_level, device_no, meter_type, premise_type, station, area)
+					$query = "INSERT INTO tbl_survey_details( service_order, address, latitude, longitude, voltage_level, device_no, meter_type, premise_type, station, area,geom)
 						VALUES ( 
 							'".$sheet->getCell('A'. $j)->getValue()."',
 							'".$sheet->getCell('C'. $j)->getValue()."',
@@ -45,7 +45,8 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 							'".$sheet->getCell('H'. $j)->getValue()."',
 						    '".$sheet->getCell('I'. $j)->getValue()."',
 							'".$sheet->getCell('J'. $j)->getValue()."',
-							'".$sheet->getCell('K'. $j)->getValue()."')";
+							'".$sheet->getCell('K'. $j)->getValue()."',
+							st_geomfromtext('POINT('||".$sheet->getCell('e'. $j)->getValue()."||' '||".$sheet->getCell('d'. $j)->getValue()."||')',4326))";
 							 //echo $query;
 		                    //exit(); 
 							pg_query($cn , $query);
