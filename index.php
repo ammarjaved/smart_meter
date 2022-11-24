@@ -94,6 +94,8 @@ else {
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                 <a class="dropdown-item" onclick="displayUploadExcel()"><button class="dropdown-item" type="button">Upload Excel</button></a>
                                 <a class="dropdown-item" onclick="dispalySelect()"><button class="dropdown-item" type="button" >Set Attribute</button></a>
+                                <a class="dropdown-item" href="http://121.121.232.54:88/sm_dashboard/" target="_blank"><button class="dropdown-item" type="button" >SM Dashboard</button></a>
+
                                 <a href="services/logout.php" class="pull-right btn  dropdown-item text-dark" style="color: white; margin-top: 3px !important; border-top:1px solid #00000026; border-radius:0px">
                                 <button class="dropdown-item"> Logout</button></a>
                             </div>
