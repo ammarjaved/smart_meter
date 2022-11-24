@@ -785,3 +785,10 @@ function displayUploadExcel(){
     $(".upload_Excel").css("display",check)
     $(".selcet_area").css("display","none")
 }
+
+
+function check(){
+  alert("sdf");
+        window.location.href = '/smart_meter/services/files/Sample.xlsx';
+   
+}

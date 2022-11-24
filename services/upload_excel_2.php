@@ -19,25 +19,27 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 		$spreadsheet = $reader->load($folder2);
 		$total_sheets = $spreadsheet->getSheetCount();
 
-       $cn = pg_connect("host=localhost port=5433 user=postgres dbname=smart_meter password=Admin123");
+       $cn = pg_connect("host=localhost port=5432 user=postgres dbname=smart3 password=123");
 	if (!$cn) { echo "DB not connected " ; exit();}
-
+$sheet = $spreadsheet->getSheet('0');
+	if( $sheet->getCell('A1')->getValue() == 'Installation' && $sheet->getCell('B1')->getValue() == 'Trim SO' && 
+	$sheet->getCell('E1')->getValue() == 'Latitude' && $sheet->getCell('F1')->getValue() == 'Longitude'){
 	for ($i=0; $i < $total_sheets ; $i++) { 
 
 			$sheet = $spreadsheet->getSheet($i);
 			$t_col = $sheet->getHighestColumn();
-			echo $r_row = $sheet->getHighestRow();
-			// exit();
-			echo "<br><br><br>";
+			$r_row = $sheet->getHighestRow();
+			
+			
 	
 				for ($j=2; $j < $r_row +1; $j++) { 
 					
-
+					if($sheet->getCell('A'. $j)->getValue() != ''){
 					
 					$query = "INSERT INTO tbl_survey_details(installation, service_order, address, latitude, longitude, voltage_level, device_no, meter_type, premise_type, station, area,geom)
 						VALUES ( 
 							'".$sheet->getCell('A'. $j)->getValue()."',
-							'".$sheet->getCell('C'. $j)->getValue()."',
+							'".$sheet->getCell('B'. $j)->getValue()."',
 							'".$sheet->getCell('D'. $j)->getValue()."',
 							'".$sheet->getCell('E'. $j)->getValue()."',
 							'".$sheet->getCell('F'. $j)->getValue()."',
@@ -47,10 +49,11 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 							'".$sheet->getCell('J'. $j)->getValue()."',
 							'".$sheet->getCell('K'. $j)->getValue()."',
 							'".$sheet->getCell('L'. $j)->getValue()."',
-							st_geomfromtext('POINT('||".$sheet->getCell('e'. $j)->getValue()."||' '||".$sheet->getCell('d'. $j)->getValue()."||')',4326))";
+							st_geomfromtext('POINT('||".$sheet->getCell('f'. $j)->getValue()."||' '||".$sheet->getCell('e'. $j)->getValue()."||')',4326))";
 							 //echo $query;
 		                    //exit(); 
 							pg_query($cn , $query);
+						}
 		// exit();
 				}
 				// exit();
@@ -62,7 +65,10 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 
 pg_close($cn);
-exit();
+// exit();
+	}else{
+		echo "uploaded worng file !!!";
+	}
 }
 
 

@@ -39,7 +39,7 @@ else {
             height: 400px;
         }
         select#py_select {
-            margin: 25px auto;
+            margin: 10px auto;
             width: 80%;  
         }
         .upload_Excel { margin: 20px 50px 17px; }
@@ -105,17 +105,35 @@ else {
 
  </nav>
     
- <div class="collapse container" id="collapseExample">
-        <div class="">
-            <span>Click on upload Button to upload Excel</span> <button class="btn btn-danger" onclick="uploadExcel()">UploadExcel</button>
+ <div class="collapse container-fluid" id="collapseExample">
+ <div class="card col-lg-4">
+        <div class=" text-center panel panel-default"  style="margin-top: 7%; padding-top:4%">
+            <span>For Sample file click on download button</span> <br>
+            <div class="panel panel-default" style="border: none;">
+            
+            <button class="btn btn-success " onclick="check()" >Download Sample File</button>
+            </div>
         </div>
+ </div>
     
-        <div class="selcet_area" >
+        <div class="card col-lg-4">
+        <div class=" text-center panel panel-default"  style="margin-top: 7%; padding-top:4%">
+            <span>Click on upload Button to upload Excel</span> <br>
+            <div class="panel panel-default" style="border: none;">
+            <button class="btn btn-danger " onclick="uploadExcel()">UploadExcel</button>
+            </div>
+        </div>
+        </div>
+        <div class="selcet_area col-lg-4" >
+        <div class=" text-center panel panel-default"  style="margin-top: 7%; padding-top:4%">
+        <span>Set Attributes</span> <br>
+    
             <select name="ly_select" id="py_select" class="form-control" aria-label="Default select example" onchange="test()">
                 <option value="" hidden>Select Option</option>
             </select>
         </div>
     </div> 
+ </div>
 <div class="container-fluid" style="padding:0 0 0 0;">
 
     <input type="file" id="excel" name="excel" style="display: none;">
