@@ -111,7 +111,7 @@ else {
             <span>For Sample file click on download button</span> <br>
             <div class="panel panel-default" style="border: none;">
             
-            <button class="btn btn-success " onclick="check()" >Download Sample File</button>
+            <button class="btn btn-success " onclick="SampleFile()" >Download Sample File</button>
             </div>
         </div>
  </div>
@@ -128,7 +128,7 @@ else {
         <div class=" text-center panel panel-default"  style="margin-top: 7%; padding-top:4%">
         <span>Set Attributes</span> <br>
     
-            <select name="ly_select" id="py_select" class="form-control" aria-label="Default select example" onchange="test()">
+            <select name="ly_select" id="py_select" class="form-control" aria-label="Default select example" onchange="select_attributes()">
                 <option value="" hidden>Select Option</option>
             </select>
         </div>

@@ -763,7 +763,7 @@ function uploadExcel(){
 
 
 
-function test(){
+function select_attributes(){
 
    let vab;
    vab =  $( "#py_select option:selected" ).val();
@@ -786,9 +786,9 @@ function displayUploadExcel(){
     $(".selcet_area").css("display","none")
 }
 
+//--------------Download sample file -----------
+function SampleFile(){
 
-function check(){
-  alert("sdf");
         window.location.href = '/smart_meter/services/files/Sample.xlsx';
    
 }
