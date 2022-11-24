@@ -19,7 +19,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 		$spreadsheet = $reader->load($folder2);
 		$total_sheets = $spreadsheet->getSheetCount();
 
-       $cn = pg_connect("host=localhost port=5432 user=postgres dbname=smart3 password=123");
+       $cn = pg_connect("host=localhost port=5433 user=postgres dbname=smart_meter password=Admin123");
 	if (!$cn) { echo "DB not connected " ; exit();}
 
 	for ($i=0; $i < $total_sheets ; $i++) { 
