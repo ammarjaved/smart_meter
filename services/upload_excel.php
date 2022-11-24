@@ -31,14 +31,14 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 			echo "<br><br><br>";
 	
 				for ($j=2; $j < $r_row +1; $j++) { 
-					echo $coca= "=".$sheet->getCell('B'. $j)->getValue();
+					echo $coca= "=".$sheet->getCell('A'. $j)->getValue();
 
 					
-					$query = "INSERT INTO tbl_survey_detail_2(installation, trim_so,conca_so, address, latitude, longitude, voltage_level, device_no, meter_type, premise_type, station, area, installed, remarks_1, remarks_2)
+					$query = "INSERT INTO tbl_survey_detail_2( trim_so,conca_so, address, latitude, longitude, voltage_level, device_no, meter_type, premise_type, station, area, installed, remarks_1, remarks_2)
 						VALUES ( 
 							'".$sheet->getCell('A'. $j)->getValue()."',
-							'".$sheet->getCell('B'. $j)->getValue()."',
 							'$coca',
+							'".$sheet->getCell('C'. $j)->getValue()."',
 							'".$sheet->getCell('D'. $j)->getValue()."',
 							'".$sheet->getCell('E'. $j)->getValue()."',
 							'".$sheet->getCell('F'. $j)->getValue()."',
@@ -49,10 +49,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 							'".$sheet->getCell('K'. $j)->getValue()."',
 							'".$sheet->getCell('L'. $j)->getValue()."',
 							'".$sheet->getCell('M'. $j)->getValue()."',
-							'".$sheet->getCell('N'. $j)->getValue()."',
-							'".$sheet->getCell('O'. $j)->getValue()."'
-							
-							)";
+							'".$sheet->getCell('N'. $j)->getValue()."')";
 							 //echo $query;
 		                    //exit(); 
 							pg_query($cn , $query);
