@@ -37,7 +37,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 					$query = "INSERT INTO tbl_survey_details(installation, service_order, address, latitude, longitude, voltage_level, device_no, meter_type, premise_type, station, area,geom)
 						VALUES ( 
 							'".$sheet->getCell('A'. $j)->getValue()."',
-							'".$sheet->getCell('C'. $j)->getValue()."',
+							'".$sheet->getCell('B'. $j)->getValue()."',
 							'".$sheet->getCell('D'. $j)->getValue()."',
 							'".$sheet->getCell('E'. $j)->getValue()."',
 							'".$sheet->getCell('F'. $j)->getValue()."',
@@ -47,8 +47,8 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 							'".$sheet->getCell('J'. $j)->getValue()."',
 							'".$sheet->getCell('K'. $j)->getValue()."',
 							'".$sheet->getCell('L'. $j)->getValue()."',
-							st_geomfromtext('POINT('||".$sheet->getCell('e'. $j)->getValue()."||' '||".$sheet->getCell('d'. $j)->getValue()."||')',4326))";
-							 //echo $query;
+							st_geomfromtext('POINT('||".$sheet->getCell('f'. $j)->getValue()."||' '||".$sheet->getCell('e'. $j)->getValue()."||')',4326))";
+							// echo $query;
 		                    //exit(); 
 							pg_query($cn , $query);
 		// exit();
