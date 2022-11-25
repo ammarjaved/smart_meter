@@ -35,6 +35,17 @@ $sheet = $spreadsheet->getSheet('0');
 				for ($j=2; $j < $r_row +1; $j++) { 
 					
 					if($sheet->getCell('A'. $j)->getValue() != ''){
+						// $Service_check = "SELECT count(*) FROM tbl_survey_details WHERE service_order='".$sheet->getCell('B'. $j)->getValue()."'";
+
+					
+						$result_query = pg_query($cn , "SELECT count(*) FROM tbl_survey_details WHERE service_order='".$sheet->getCell('B'. $j)->getValue()."'");
+                         $arrq = pg_fetch_all($result_query);
+						// echo $arrq[0]['count'];
+						// exit();
+						
+						
+						if( $arrq[0]['count'] == 0){
+							
 					
 					$query = "INSERT INTO tbl_survey_details(installation, service_order, address, latitude, longitude, voltage_level, device_no, meter_type, premise_type, station, area,geom)
 						VALUES ( 
@@ -52,8 +63,13 @@ $sheet = $spreadsheet->getSheet('0');
 							st_geomfromtext('POINT('||".$sheet->getCell('f'. $j)->getValue()."||' '||".$sheet->getCell('e'. $j)->getValue()."||')',4326))";
 							 //echo $query;
 		                    //exit(); 
+							try{
 							pg_query($cn , $query);
+							}catch(Exception $e){
+
+							}
 						}
+					}
 		// exit();
 				}
 				// exit();

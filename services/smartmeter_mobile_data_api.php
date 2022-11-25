@@ -29,11 +29,18 @@ class SmartMeterApi extends connection
         $folder2 = "./image/" . $after_pic;
         $pic1='http://121.121.232.54:88/smart_meter/services/image/'.$before_pic;
         $pic2= 'http://121.121.232.54:88/smart_meter/services/image/'.$after_pic;
+
+        if ($_REQUEST['app_type'] == "new") {
+        
             $sql = "INSERT INTO public.tbl_meter(
                 status, old_meter_no, new_meter_no, phase, remarks, pic_before, pic_after, 
                 created_by,installation_id,latitude,longitude,geom,service_order )
                 VALUES ('$status','$old_meter','$new_meter', '$phase', '$remarks', '$pic1','$pic2'
                 ,'$created_by','$installation_id',$lat,$lon,st_geomfromtext('POINT('||$lon||' '||$lat||')',4326),$service_order);";
+
+            }else{
+            	$sql = "UPDATE tbl_meter SET status= '$status' , old_meter_no='$old_meter', new_meter_no='$new_meter', phase= '$phase',remarks='$remarks',pic_before='$pic1', pic_after ='$pic2' , created_by ='$created_by', installation_id = '$installation_id', latitude='$lat', longitude= '$lon', geom=st_geomfromtext('POINT('||$lon||' '||$lat||')',4326),service_order='$service_order' WHERE installation_id = '$installation_id'";
+            }
 
           $sql1="update tbl_survey_details set installed_status='$status' where installation='$installation_id'";
         $output = array();
