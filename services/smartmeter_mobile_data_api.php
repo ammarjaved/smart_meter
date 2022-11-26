@@ -27,8 +27,8 @@ class SmartMeterApi extends connection
         $after_pic = $_FILES["after_pic"]["name"];
         $after_tempname = $_FILES["after_pic"]["tmp_name"];
         $folder2 = "./image/" . $after_pic;
-        $pic1='http://121.121.232.54:88/smart_meter/services/image/'.$before_pic;
-        $pic2= 'http://121.121.232.54:88/smart_meter/services/image/'.$after_pic;
+        $pic1='http://121.121.232.54:8888/smart_meter/services/image/'.$before_pic;
+        $pic2= 'http://121.121.232.54:8888/smart_meter/services/image/'.$after_pic;
 
         if ($_REQUEST['app_type'] == "new") {
         
