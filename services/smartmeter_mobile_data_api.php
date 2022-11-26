@@ -27,16 +27,13 @@ class SmartMeterApi extends connection
         $after_pic = $_FILES["after_pic"]["name"];
         $after_tempname = $_FILES["after_pic"]["tmp_name"];
         $folder2 = "./image/" . $after_pic;
-<<<<<<< HEAD
+
         $pic1='http://121.121.232.54:8888/smart_meter/services/image/'.$before_pic;
         $pic2= 'http://121.121.232.54:8888/smart_meter/services/image/'.$after_pic;
-=======
-        $pic1='http://121.121.232.54:88/smart_meter/services/image/'.$before_pic;
-        $pic2= 'http://121.121.232.54:88/smart_meter/services/image/'.$after_pic;
+
 
         if ($_REQUEST['app_type'] == "new") {
-        
->>>>>>> 295f4cb4d2f5a548c731f50aae722152d69b5811
+
             $sql = "INSERT INTO public.tbl_meter(
                 status, old_meter_no, new_meter_no, phase, remarks, pic_before, pic_after, 
                 created_by,installation_id,latitude,longitude,geom,service_order )
