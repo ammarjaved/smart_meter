@@ -550,4 +550,7 @@ table tr:nth-child(even) {
     color: #0D6EFD;
   }
 
-  
+  .color4{
+    background-color: #98df95d1;
+    color: #71e46bd1;
+  }
