@@ -10,7 +10,7 @@ $sql2="select count(*) from tbl_survey_details where installed_status='0'";
 $sql3="select count(*) from tbl_survey_details where installed_status='Installed'";
 $sql4="select count(*) from tbl_survey_details where installed_status='TRAS'";
 $spl5="select count(*) from tbl_meter where created_at::date = now()::date";
-$spl5="select count(*) from tbl_survey_details where week_no =(select  max(week_no) from tbl_survey_details) and installed_status<>''";
+$spl6="select count(*) from tbl_survey_details where week_no =(select  max(week_no) from tbl_survey_details) and installed_status<>''";
 
 //echo $sql1."<br/>";
 $query1=pg_query($sql1);
