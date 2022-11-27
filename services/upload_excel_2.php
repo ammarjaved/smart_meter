@@ -69,6 +69,9 @@ $sheet = $spreadsheet->getSheet('0');
 							}catch(Exception $e){
 
 							}
+						}else{
+							echo "This data is already exist in Database";
+							exit();
 						}
 					}
 		// exit();
