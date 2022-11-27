@@ -6,10 +6,10 @@ $output = array();
 
 
 $sql1="select count(*) from tbl_survey_details";
-$sql2="select count(*) from tbl_survey_details where installed_status='0'";
+$sql2="select count(*) from tbl_survey_details where installed_status='Unsurveyed'";
 $sql3="select count(*) from tbl_survey_details where installed_status='Installed'";
 $sql4="select count(*) from tbl_survey_details where installed_status='TRAS'";
-$sql5="select count(*) from tbl_meter where created_at::date = now()::date";
+$sql5="select count(*) from tbl_survey_details where installed_status ='0'";
 $sql6="select count(*) from tbl_survey_details where week_no =(select  max(week_no) from tbl_survey_details) and installed_status<>''";
 
 //echo $sql1."<br/>";
