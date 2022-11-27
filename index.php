@@ -106,7 +106,7 @@ else {
  </nav>
     
  <div class="collapse container-fluid" id="collapseExample">
- <div class="card col-lg-4">
+ <div class="card col-lg-3">
         <div class=" text-center panel panel-default"  style="margin-top: 7%; padding-top:4%">
             <span>For Sample file click on download button</span> <br>
             <div class="panel panel-default" style="border: none;">
@@ -116,7 +116,7 @@ else {
         </div>
  </div>
     
-        <div class="card col-lg-4">
+        <div class="card col-lg-3">
         <div class=" text-center panel panel-default"  style="margin-top: 7%; padding-top:4%">
             <span>Click on upload Button to upload Excel</span> <br>
             <div class="panel panel-default" style="border: none;">
@@ -124,7 +124,7 @@ else {
             </div>
         </div>
         </div>
-        <div class="selcet_area col-lg-4" >
+        <div class="selcet_area col-lg-3" >
         <div class=" text-center panel panel-default"  style="margin-top: 7%; padding-top:4%">
         <span>Set Attributes</span> <br>
     
@@ -132,7 +132,30 @@ else {
                 <option value="" hidden>Select Option</option>
             </select>
         </div>
+
     </div> 
+    <div class="col-md-3 ">
+                <div class="row">
+                    
+                    <div class="col-md-2 " >
+                        <div class="radio">
+                        <label><input type="radio" name="optradio" onchange="typeaheadsearch()" id="fpradiobtn" value="so" checked>SO</label>
+                        </div>
+                        <div class="radio">
+                        <label><input type="radio" name="optradio" onchange="typeaheadsearch()" id="sfpradiobtn" value="meter_no">Meter No</label>
+                        </div>
+                       
+                    </div>
+                    <div id="search-bar" class="col-md-6" style="margin-top:30px; margin-left:10px;">
+                            <input type="text" id="search_input1" name="search1" placeholder="Search DeviceID..." class="typeahead" >
+                            <input type="text" id="search_input2" name="search2" placeholder="Search DeviceID..." class="typeahead" style="display:none; margin-top:-20px !important;">
+
+                    </div>
+                    <div class="col-md-2" style="margin-top:25px;">
+                        <button  style="margin-right:50px;" id="ser" onclick="search_deviceid()" class="pull-left btn btn-success">Search</button><br />
+                    
+                    </div>
+                </div></div>
  </div>
 <div class="container-fluid" style="padding:0 0 0 0;">
 
@@ -289,10 +312,11 @@ else {
 <script src="libs/images_slider/js-view/jQueryRotate.js"></script>
 <link rel="stylesheet" href="libs/window-engine.css" />
 <script src="libs/window-engine.js"></script>
-<script src="scripts/map.js"></script>
-<script src="libs/typeahead.min.js"></script>
+
 <script type="text/javascript" src="scripts/jquery.dataTables.js"></script>
 <script src="node_modules/lightbox2/dist/js/lightbox-plus-jquery.min.js"></script>
+<script src="scripts/map.js"></script>
+<script src="libs/typeahead.min.js"></script>
 
 
  <div id="myDiv" style="display: none;"></div>

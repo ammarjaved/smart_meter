@@ -14,15 +14,11 @@ class Divisions extends connection
         $key=$_GET['key'];
         $tblname = $_REQUEST['tblname'];
 
-        if ($tblname == 'fpl1') {
-            $sql = "select l1_id from public.fpl1 where l1_id ilike '%{$key}%' limit 5;";
-        } else if ($tblname == 'sfp_l2') {
-            $sql = "select l2_id from public.sfp_l2 where l2_id ilike '%{$key}%' limit 5;";
-        } else if ($tblname == 'mfp_l3') {
-            $sql = "select l3_id from public.mfp_l3 where l3_id ilike '%{$key}%' limit 5;";
-        } else if ($tblname == 'dp') {
-            $sql = "select gid from public.demand_point where gid>=$key limit 5;";
-        }
+        if ($tblname == 'so') {
+            $sql = "select service_order from public.tbl_survey_details where service_order ilike '%{$key}%' limit 10;";
+        } else if ($tblname == 'meter_no') {
+            $sql = "select device_no from public.tbl_survey_details where device_no ilike '%{$key}%' limit 10;";
+        } 
 
         $output = array();
 
@@ -32,14 +28,10 @@ class Divisions extends connection
            // $output = pg_fetch_assoc($result_query);
             while($row=pg_fetch_assoc($result_query))
             {
-                if ($tblname == 'fpl1') {
-                    $output[] = $row['l1_id'];
-                } else if ($tblname == 'sfp_l2') {
-                    $output[] = $row['l2_id'];
-                } else if ($tblname == 'mfp_l3') {
-                    $output[] = $row['l3_id'];
-                }else if ($tblname == 'dp') {
-                    $output[] = $row['gid'];
+                if ($tblname == 'so') {
+                    $output[] = $row['service_order'];
+                } else if ($tblname == 'meter_no') {
+                    $output[] = $row['device_no'];
                 }
             }
         }

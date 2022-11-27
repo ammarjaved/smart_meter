@@ -720,6 +720,8 @@ $(document).ready(function(){
     // getProperties('total_tras');
     // getProperties('total_installed');
     // getProperties('site_info')
+    typeaheadsearch();
+    
 
     $('#py_select').append(`<option value="total_order">Total Order</option>`);
     $('#py_select').append(`<option value="not_installed">Not Installed</option>`);
@@ -792,3 +794,72 @@ function SampleFile(){
         window.location.href = '/smart_meter/services/files/Sample.xlsx';
    
 }
+
+
+
+
+
+function search_deviceid(){
+    var deviceid='';
+    var chktblname = $("input[name='optradio']:checked").val();
+
+    if(chktblname=='so'){
+         deviceid = $("#search_input1").val(); 
+    }
+    if(chktblname=='meter_no'){
+         deviceid = $("#search_input2").val(); 
+    }
+   
+   
+    // alert(chktblname)
+
+        $.ajax({
+            url: "services/returnxy.php?did="+ deviceid + "&lyr=" + chktblname,
+            type: "GET",
+            async: false,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function callback(response) {
+               console.log(response);
+               var latlng=[response[0].y, response[0].x]
+                map.setView(latlng,19);
+                L.marker(latlng).addTo(map);
+            }
+        });
+}
+
+
+
+
+
+function typeaheadsearch(){
+    $('.typeahead').unbind('typeahead');
+    var tblname;
+    var radioValue = $("input[name='optradio']:checked").val();
+    // alert(radioValue)
+        if(radioValue=='so'){
+            $('#search_input1').show();
+            $('#search_input2').hide();
+        }
+        if(radioValue=='meter_no'){
+            $('#search_input1').hide();
+            $('#search_input2').show();
+           
+        }
+       
+
+        $('#search_input1').typeahead({
+            name: 'hce1',
+            remote:'services/search.php?key=%QUERY'+ "&tblname=so",
+            limit: 5
+        });
+
+        $('#search_input2').typeahead({
+            name: 'hce2',
+            remote:'services/search.php?key=%QUERY'+ "&tblname=meter_no",
+            limit: 5
+        });
+
+       
+    }
+
