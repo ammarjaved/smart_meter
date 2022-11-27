@@ -11,16 +11,11 @@ public function fillDropdown(){
     $did = $_REQUEST['did'];
 
 
-        if ($lyr == 'fpl1') {
-            $sql = "select st_x((st_dump(geom)).geom) as x,st_y((st_dump(geom)).geom) as y from public.fpl1 where l1_id='$did';";
-        } else if ($lyr == 'sfp_l2') {
-            $sql = "select st_x((st_dump(geom)).geom) as x,st_y((st_dump(geom)).geom) as y from public.sfp_l2 where l2_id='$did';";
+        if ($lyr == 'so') {
+            $sql = "select st_x((st_dump(geom)).geom) as x,st_y((st_dump(geom)).geom) as y from public.tbl_survey_details where service_order='$did';";
+        } else if ($lyr == 'meter_no') {
+            $sql = "select st_x((st_dump(geom)).geom) as x,st_y((st_dump(geom)).geom) as y from public.tbl_survey_details where device_no='$did';";
 
-        } else if ($lyr == 'mfp_l3') {
-            $sql = "selectst_x((st_dump(geom)).geom) as x,st_y((st_dump(geom)).geom) as y from public.mfp_l3 where l3_id='$did';";
-        } else if ($lyr == 'dp') {
-            $sql = "select st_x((st_dump(geom)).geom) as x,st_y((st_dump(geom)).geom) as y from public.demand_point where gid='$did';";
-        //echo $sql;
         }else{
             'not found';
         }
