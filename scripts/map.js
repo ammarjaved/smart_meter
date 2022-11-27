@@ -589,6 +589,12 @@ function fillCounts(){
                  $("#syellow").text(data.sodium[0].count);
             
                  $("#sblue").text(data.watt[0].count);
+
+                 $("#stoday").text(data.today[0].count);
+
+                 $("#sweek").text(data.week[0].count);
+
+
            
             //   }
             }     

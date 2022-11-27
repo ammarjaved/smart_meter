@@ -165,14 +165,14 @@ else {
     <div id="content">
  
 		<div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div style="cursor:pointer" class="countdiv card-counter info" id="RYB">
                             <i class="fa fa-bolt"></i>
                             <span class="count-numbers" id="tryb"></span>
                             <span class="count-name">Total Order Received</span>
                     </div>
                 </div>	
-                <div class="col-md-3">
+                <div class="col-md-2">
                     
                     <div style="cursor:pointer" class="countdiv card-counter color1" id="R">
                     <i class="fa fa-bolt"></i>
@@ -182,7 +182,7 @@ else {
 
                 </div>
                 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div style="cursor:pointer;" class=" countdiv card-counter color2" id="Y">
                         <i class="fa fa-bolt"></i>
                         <span class="count-numbers" id="syellow"></span>
@@ -190,11 +190,27 @@ else {
                     </div>
                 </div>
                 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div style="cursor:pointer" class="countdiv card-counter color3" id="B" style="background-color: #D7F0DD !important;">
                         <i class="fa fa-bolt"></i>
                         <span class="count-numbers" id="sblue"></span>
                         <span class="count-name">Total Tras</span>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div style="cursor:pointer" class="countdiv card-counter color4" id="B" style="background-color: #D7F0DD !important;">
+                        <i class="fa fa-bolt"></i>
+                        <span class="count-numbers" id="stoday"></span>
+                        <span class="count-name">Visited Today</span>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div style="cursor:pointer" class="countdiv card-counter color3" id="B" style="background-color: #D7F0DD !important;">
+                        <i class="fa fa-bolt"></i>
+                        <span class="count-numbers" id="sweek"></span>
+                        <span class="count-name">Visited current Week</span>
                     </div>
                 </div>
             
