@@ -23,7 +23,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 	if (!$cn) { echo "DB not connected " ; exit();}
 $sheet = $spreadsheet->getSheet('0');
 	if( $sheet->getCell('A1')->getValue() == 'Installation' && $sheet->getCell('B1')->getValue() == 'Trim SO' && 
-	$sheet->getCell('E1')->getValue() == 'Latitude' && $sheet->getCell('F1')->getValue() == 'Longitude' && $sheet->getCell('P1')->getValue() == 'week'){
+	$sheet->getCell('E1')->getValue() == 'Latitude' && $sheet->getCell('F1')->getValue() == 'Longitude' && strtolower($sheet->getCell('P1')->getValue()) == 'week'){
 	for ($i=0; $i < $total_sheets ; $i++) { 
 
 			$sheet = $spreadsheet->getSheet($i);
@@ -47,7 +47,7 @@ $sheet = $spreadsheet->getSheet('0');
 						if( $arrq[0]['count'] == 0){
 							
 					
-					$query = "INSERT INTO tbl_survey_details(installation, service_order, address, latitude, longitude, voltage_level, device_no, meter_type, premise_type, station, area,geom,week_no)
+					$query = "INSERT INTO tbl_survey_details(installation, service_order, address, latitude, longitude, voltage_level, device_no, meter_type, premise_type, station, area,geom,week_no,month,year)
 						VALUES ( 
 							'".$sheet->getCell('A'. $j)->getValue()."',
 							'".$sheet->getCell('B'. $j)->getValue()."',
@@ -62,7 +62,9 @@ $sheet = $spreadsheet->getSheet('0');
 							'".$sheet->getCell('L'. $j)->getValue()."',
 
 							st_geomfromtext('POINT('||".$sheet->getCell('f'. $j)->getValue()."||' '||".$sheet->getCell('e'. $j)->getValue()."||')',4326),
-							". (int) $sheet->getCell('P'. $j)->getValue().")";
+							". (int) $sheet->getCell('P'. $j)->getValue().",
+							".$sheet->getCell('Q'. $j)->getValue().",
+							".$sheet->getCell('R'. $j)->getValue().")";
 							 //echo $query;
 		                    //exit(); 
 							try{

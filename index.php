@@ -172,15 +172,7 @@ else {
                             <span class="count-name">Total Order Received</span>
                     </div>
                 </div>	
-                <div class="col-md-2">
-                    
-                    <div style="cursor:pointer" class="countdiv card-counter color1" id="R">
-                    <i class="fa fa-bolt"></i>
-                    <span class="count-numbers" id="sred"></span>
-                    <span class="count-name">Total Not Visited</span>
-                    </div>
-
-                </div>
+                
                 
                 <div class="col-md-2">
                     <div style="cursor:pointer;" class=" countdiv card-counter color2" id="Y">
@@ -197,20 +189,30 @@ else {
                         <span class="count-name">Total Tras</span>
                     </div>
                 </div>
-
                 <div class="col-md-2">
-                    <div style="cursor:pointer" class="countdiv card-counter color4" id="B" style="background-color: #D7F0DD !important;">
-                        <i class="fa fa-bolt"></i>
-                        <span class="count-numbers" id="stoday"></span>
-                        <span class="count-name">Visited Today</span>
+                    
+                    <div style="cursor:pointer" class="countdiv card-counter color1" id="R">
+                    <i class="fa fa-bolt"></i>
+                    <span class="count-numbers" id="sred"></span>
+                    <span class="count-name">Total Unsurveyed</span>
                     </div>
+
                 </div>
+
+                
 
                 <div class="col-md-2">
                     <div style="cursor:pointer" class="countdiv card-counter color3" id="B" style="background-color: #D7F0DD !important;">
                         <i class="fa fa-bolt"></i>
                         <span class="count-numbers" id="sweek"></span>
                         <span class="count-name">Visited current Week</span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div style="cursor:pointer" class="countdiv card-counter color4" id="B" style="background-color: #D7F0DD !important;">
+                        <i class="fa fa-bolt"></i>
+                        <span class="count-numbers" id="stoday"></span>
+                        <span class="count-name">Total Remaining</span>
                     </div>
                 </div>
             
