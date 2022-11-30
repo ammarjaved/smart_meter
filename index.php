@@ -95,6 +95,7 @@ else {
                                 <!-- <a class="dropdown-item" onclick="displayUploadExcel()"><button class="dropdown-item" type="button">Upload Excel</button></a> -->
                                 <a class="dropdown-item" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><button class="dropdown-item" type="button" >Upload Excel & attributes</button></a>
                                 <a class="dropdown-item" href="http://121.121.232.54:88/sm_dashboard/" target="_blank"><button class="dropdown-item" type="button" >SM Dashboard</button></a>
+                                <a class="dropdown-item" data-toggle="collapse" href="#setDateAndYear" role="button" aria-controls="setDateAndYear" aria-expanded="false"><button class="dropdown-item" type="button" >Set Week and Year</button></a>
                                 <a href="services/logout.php" class="pull-right btn  dropdown-item text-dark" style="color: white; margin-top: 3px !important; border-top:1px solid #00000026; border-radius:0px">
                                 <button class="dropdown-item"> Logout</button></a>
                             </div>
@@ -106,16 +107,16 @@ else {
  </nav>
     
  <div class="collapse container-fluid" id="collapseExample">
- <div class="card col-lg-3">
-        <div class=" text-center panel panel-default"  style="margin-top: 7%; padding-top:4%">
-            <span>For Sample file click on download button</span> <br>
-            <div class="panel panel-default" style="border: none;">
-            
-            <button class="btn btn-success " onclick="SampleFile()" >Download Sample File</button>
+    <div class="card col-lg-3">
+            <div class=" text-center panel panel-default"  style="margin-top: 7%; padding-top:4%">
+                <span>For Sample file click on download button</span> <br>
+                <div class="panel panel-default" style="border: none;">
+                
+                <button class="btn btn-success " onclick="SampleFile()" >Download Sample File</button>
+                </div>
             </div>
-        </div>
- </div>
-    
+    </div>
+        
         <div class="card col-lg-3">
         <div class=" text-center panel panel-default"  style="margin-top: 7%; padding-top:4%">
             <span>Click on upload Button to upload Excel</span> <br>
@@ -157,6 +158,44 @@ else {
                     </div>
                 </div></div>
  </div>
+
+ <div class="collapse container-fluid" id="setDateAndYear">
+ <div class="selcet_area col-lg-3" >
+        <div class=" text-center panel panel-default "  style="margin-top: 7%; padding:4%">
+        
+        <span>Select Week</span> <br>
+        <span id="er_week" class="text-danger"></span>
+            <select name="week_select" id="week_select" class="form-control" aria-label="Default select example" >
+                <option value="" hidden>Select Option</option>
+            </select>
+        </div>
+
+    </div> 
+    <div class="selcet_area col-lg-3" >
+        <div class=" text-center panel panel-default"  style="margin-top: 7%; padding:4%">
+        <span>Select Month</span> <br>
+        <span id="er_month" class="text-danger"></span>
+            <select name="month_select" id="month_select" class="form-control" aria-label="Default select example" >
+                <option value="" hidden>Select Option</option>
+            </select>
+        </div>
+
+    </div> 
+        <div class="selcet_area col-lg-3" >
+        <div class=" text-center panel panel-default"  style="margin-top: 7%; padding:4%">
+        <span>Select Year</span> <br>
+        <span id="er_year" class="text-danger"></span>
+            <select name="year_select" id="year_select" class="form-control" aria-label="Default select example" >
+                <option value="" hidden>Select Option</option>
+            </select>
+        </div>
+
+    </div> 
+    <div class="col-md-3 ">
+        <button class="btn btn-success " style="margin-top: 10%;" onclick="setWeek_er()">Search</button>
+    </div>
+ </div>
+
 <div class="container-fluid" style="padding:0 0 0 0;">
 
     <input type="file" id="excel" name="excel" style="display: none;">
