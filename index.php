@@ -118,12 +118,28 @@ else {
     </div>
         
         <div class="card col-lg-3">
-        <div class=" text-center panel panel-default"  style="margin-top: 7%; padding-top:4%">
+            <div class="col-6">
+        <div class=" text-center panel panel-default"  style="margin-top: 7%; padding-top:4%;">
             <span>Click on upload Button to upload Excel</span> <br>
-            <div class="panel panel-default" style="border: none;">
+            <div class="panel panel-default" style="border: none; padding-bottom:12%">
+           
+
+        <div class="col-lg-5">
+
             <button class="btn btn-danger " onclick="uploadExcel()">UploadExcel</button>
+        </div>
+
+
+        <div class="col-lg-7">
+
+            <button class="btn btn-danger " onclick="uploadExcel3()">UploadReguralExcel</button>
+        </div>
+
+
+            <!-- <button class="btn btn-danger " onclick="uploadExcel()">UploadExcel</button> -->
             </div>
         </div>
+            </div>
         </div>
         <div class="selcet_area col-lg-3" >
         <div class=" text-center panel panel-default"  style="margin-top: 7%; padding-top:4%">
@@ -199,6 +215,8 @@ else {
 <div class="container-fluid" style="padding:0 0 0 0;">
 
     <input type="file" id="excel" name="excel" style="display: none;">
+
+    <input type="file" id="excel3" name="excel3" style="display: none;">
 
     
     <div id="content">
