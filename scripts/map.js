@@ -572,13 +572,17 @@ L.control.layers(baseLayers, overlays).addTo(map);
 
 
 function fillCounts(){
+    var week , month, year
+    month = $("#month_select").val()
+    year = $("#year_select").val()
+    week = $("#week_select").val()
     
     $.ajax({
-        url: "services/get_counts_values.php",
+        url: "services/get_counts_values.php?week="+week+"&month="+month+"&year="+year ,
         type: "GET",
         dataType: "json",
         //data: JSON.stringify(geom,layer.geometry),
-        contentType: "application/json; charset=utf-8",
+        // contentType: "application/json; charset=utf-8",
         success: function callback(data) {
             // var r=JSON.parse(response)
               
@@ -586,20 +590,46 @@ function fillCounts(){
            
                  $("#sred").text(data.not_surveyed[0].count);
            
-                 $("#syellow").text(data.sodium[0].count);
+                 $("#syellow").text(data.installed[0].count);
             
-                 $("#sblue").text(data.watt[0].count);
+                 $("#sblue").text(data.tras[0].count);
 
-                 $("#stoday").text(data.today[0].count);
+                 $("#stoday").text(data.remaining[0].count);
 
                  $("#sweek").text(data.week[0].count);
 
 
            
-            //   }
-            }     
+            
+            } 
+           
     });
 }
+
+function setWeek_er(){
+    var week , month, year
+    month = $("#month_select").val()
+    year = $("#year_select").val()
+    week = $("#week_select").val()
+    if(week === ""){
+        $("#er_week").html("This Feild is required *")
+    }else{$("#er_week").html("")}
+    if(month === ""){
+        $("#er_month").html("This Feild is required *")
+    }else{$("#er_month").html("")}
+    if(year === ""){
+        $("#er_year").html("This Feild is required *")
+    }
+    if(week === "" || month === "" || year === ""){
+        return false
+    }else{$("#er_year").html("")}
+    
+    
+    
+
+    fillCounts()
+}
+
 
 
 function getAllDemandpoints(){
@@ -727,6 +757,7 @@ $(document).ready(function(){
     // getProperties('total_installed');
     // getProperties('site_info')
     typeaheadsearch();
+    setWeekAndYear();
     
 
     $('#py_select').append(`<option value="total_order">Total Order</option>`);
@@ -868,4 +899,37 @@ function typeaheadsearch(){
 
        
     }
+
+
+function setWeekAndYear(){
+ 
+     $("#week_select").val();
+     $.ajax({
+        url: "services/get_week_values.php",
+        type: "GET",
+        dataType: "json",
+        //data: JSON.stringify(geom,layer.geometry),
+        contentType: "application/json; charset=utf-8",
+        success: function callback(data) {
+            // var r=JSON.parse(response)
+              for(i =0 ; i<data.year.length ; i++){
+                $('#year_select').append(`<option value="${data.year[i].year}">${data.year[i].year}</option>`);
+              }
+              for(j =0 ; j<data.month.length ; j++){
+                $('#month_select').append(`<option value="${data.month[j].month}">${data.month[j].month}</option>`);
+              }
+              for(k =0 ; k<data.week.length ; k++){
+                $('#week_select').append(`<option value="${data.week[k].week_no}">${data.week[k].week_no}</option>`);
+              }
+           
+                 
+               
+
+
+           
+           
+        }   
+    });
+
+}
 
