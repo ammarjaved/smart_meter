@@ -7,13 +7,13 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 
-	$after_pic = $_FILES["excel"]["name"];
-    $after_tempname = $_FILES["excel"]["tmp_name"];
+	$after_pic = $_FILES["excel3"]["name"];
+    $after_tempname = $_FILES["excel3"]["tmp_name"];
     $folder2 = "./files/" . $after_pic;
 	    // echo $folder2;
 
    if (move_uploaded_file($after_tempname, $folder2)) {
-        	
+    // exit(); 	
 		$reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
 		$spreadsheet = $reader->load($folder2);
 		$total_sheets = $spreadsheet->getSheetCount();
