@@ -19,6 +19,7 @@ var color2='yellow'
 var color3='blue'
 var linescolor=['white','orange','grey']
 var phase_val="";
+var abc='w:1;y:2022;m:12';
 
    
     var street   = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'),
@@ -28,31 +29,58 @@ var phase_val="";
         subdomains:['mt0','mt1','mt2','mt3']
     });
 	
+    
+function fillter_current_week(){
+    
+  
+    $.ajax({
+       url: "services/get_current_week.php",
+       type: "GET",
+       dataType: "json",
+       //data: JSON.stringify(geom,layer.geometry),
+       contentType: "application/json; charset=utf-8",
+       success: function callback(data) {
+        abc = `w:${data.week};y:${data.year};m:${data.month}`;
+
+        map.removeLayer(site_info);
+        map.addLayer(site_info);
+        
+
+
+       }
+    });
+
+}
 
     not_installed = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
         layers: 'cite:not_installed',
         format: 'image/png',
         maxZoom: 21,
-        transparent: true
+        transparent: true,
+        viewparams: abc
     }, {buffer: 10});
+
     total_order = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
         layers: 'cite:total_order',
         format: 'image/png',
         maxZoom: 21,
-        transparent: true
+        transparent: true,
+        viewparams: abc
     }, {buffer: 10});
 	
 	total_tras = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
-        layers: 'cite:total_tras',
+        layers: 'cite:total_tras_new',
         format: 'image/png',
         maxZoom: 21,
-        transparent: true
+        transparent: true,
+        viewparams: abc
     }, {buffer: 10});
 	total_installed = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
-        layers: 'cite:total_installed',
+        layers: 'cite:total_installed_new',
         format: 'image/png',
         maxZoom: 21,
-        transparent: true
+        transparent: true,
+        viewparams: abc
     }, {buffer: 10});
 
     // site_info = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
@@ -62,7 +90,7 @@ var phase_val="";
     //     transparent: true
     // }, {buffer: 10});
 
-    var abc='w:2;y:2022;m:12';
+    
     site_info = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
         layers: 'cite:site_data_new',
         format: 'image/png',
@@ -589,6 +617,11 @@ function fillCounts(){
     month = $("#month_select").val()
     year = $("#year_select").val()
     week = $("#week_select").val()
+
+    
+    
+    
+   
     
     $.ajax({
         url: "services/get_counts_values.php?week="+week+"&month="+month+"&year="+year ,
@@ -617,6 +650,12 @@ function fillCounts(){
             } 
            
     });
+
+    
+    // date = 'w:'+week+';y:'+year+';m:'+month;
+    // map.removeLayer(site_info);
+    // map.addLayer(site_info);
+   
 }
 
 function setWeek_er(){
@@ -763,6 +802,7 @@ function clearAll(){
 }
 
 $(document).ready(function(){
+    fillter_current_week();
     fillCounts();
     // getProperties('total_order');
     // getProperties('not_installed');
@@ -772,6 +812,7 @@ $(document).ready(function(){
     typeaheadsearch();
     setWeekAndYear();
     
+    checkpreNext();
 
     $('#py_select').append(`<option value="total_order">Total Order</option>`);
     $('#py_select').append(`<option value="not_installed">Not Installed</option>`);
@@ -968,4 +1009,11 @@ function setWeekAndYear(){
     });
 
 }
+
+
+// function checkpreNext(){
+
+// }
+
+
 
