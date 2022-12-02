@@ -785,6 +785,25 @@ $(document).ready(function(){
     });
 
 
+    $("#excel3").on("change", function (e) {
+        var formData = new FormData();
+        formData.append('excel3', $('#excel3')[0].files[0]);
+    
+        $.ajax({
+            url : 'services/upload_excel_3.php',
+            type : 'POST',
+            data : formData,
+            processData: false,  // tell jQuery not to process the data
+            contentType: false,  // tell jQuery not to set contentType
+            success : function(data) {
+                console.log(data);
+                alert(data);
+            }
+        });
+    
+        });
+
+
     //getProperties()
    // getAllDemandpoints();
     
@@ -794,6 +813,10 @@ $(document).ready(function(){
 
 function uploadExcel(){
     $('#excel').click();
+}
+
+function uploadExcel3(){
+    $('#excel3').click();
 }
 
 
