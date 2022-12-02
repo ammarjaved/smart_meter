@@ -68,9 +68,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
                             // print_r("<pre>");
                             // print_r($fq1);print_r("</pre>");
-                            echo $fq1[0]['latitude'];
-                            echo $fq1[0]['longitude'];
-                            exit();
+                           
 
                             
 
