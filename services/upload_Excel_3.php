@@ -85,7 +85,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
                         '$so')";
                         $pg2=pg_query($query2);
                         }
-                      exit();
+                    //   exit();
                        
                     }
                     
