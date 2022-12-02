@@ -31,12 +31,12 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 			$t_col = $sheet->getHighestColumn();
 			 $r_row = $sheet->getHighestRow();
 	
-				for ($j=9; $j < $r_row +1; $j++) { 
+				for ($j=2; $j < $r_row +1; $j++) { 
                     if($sheet->getCell('A'. $j)->getValue() != ""){
 
                         $status= "";
-                        //  $so = $sheet->getCell('A'. $j)->getValue();
-                        $so= '8500400';
+                         $so = $sheet->getCell('A'. $j)->getValue();
+                        // $so= '8500400';
 
                         if($sheet->getCell('F'. $j)->getValue() == "TRAS"){
                             $status = "TRAS";
