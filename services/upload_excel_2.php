@@ -47,7 +47,7 @@ $sheet = $spreadsheet->getSheet('0');
 						if( $arrq[0]['count'] == 0){
 							
 					
-					$query = "INSERT INTO tbl_survey_details(installation, service_order, address, latitude, longitude, voltage_level, device_no, meter_type, premise_type, station, area,geom,week_no,month,year)
+					$query = "INSERT INTO tbl_survey_details(installation, service_order, address, latitude, longitude, voltage_level, device_no, meter_type, premise_type, station, area,geom,week_no,month,year, installed_status)
 						VALUES ( 
 							'".$sheet->getCell('A'. $j)->getValue()."',
 							'".$sheet->getCell('B'. $j)->getValue()."',
@@ -63,7 +63,8 @@ $sheet = $spreadsheet->getSheet('0');
 							st_geomfromtext('POINT('||".$sheet->getCell('f'. $j)->getValue()."||' '||".$sheet->getCell('e'. $j)->getValue()."||')',4326),
 							". (int) $sheet->getCell('P'. $j)->getValue().",
 							".$sheet->getCell('Q'. $j)->getValue().",
-							".$sheet->getCell('R'. $j)->getValue().")";
+							".$sheet->getCell('R'. $j)->getValue().",
+							'Unsurveyed')";
 							 //echo $query;
 		                    //exit(); 
 							try{

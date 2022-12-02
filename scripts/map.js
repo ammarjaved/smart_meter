@@ -315,20 +315,24 @@ function getProperties(layer1){
                         "<td>"+data.features[0].new_meter_no+"</td>" +
                         "</tr>" +
                         "<tr>" +
-                        "<td>Phase</td>" +
-                        "<td>"+data.features[0].properties.phase+"</td>" +
-                        "</tr>" +
-                        "<tr>" +
                         "<td>Remarks</td>" +
                         "<td>"+data.features[0].properties.remarks+"</td>" +
                         "</tr>" +
                         "<tr>" +
-                        "<td>Pic Before</td>" +
+                        "<td>Pic 1</td>" +
                         "<td><a class='example-image-link' href='"+data.features[0].properties.pic_before+"' data-lightbox='example-set' data-title='Before Pic'><img src='"+data.features[0].properties.pic_before+"' height='50'/></a></td>" +
                         "</tr>" +
                         "<tr>" +
-                        "<td>Pic After</td>" +
+                        "<td>Pic 2</td>" +
                         "<td><a class='example-image-link' href='"+data.features[0].properties.pic_after+"' data-lightbox='example-set' data-title='After pic'><img src='"+data.features[0].properties.pic_after+"' height='50'/></a></td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>Pic 3</td>" +
+                        "<td><a class='example-image-link' href='"+data.features[0].properties.pic_3+"' data-lightbox='example-set' data-title='Before Pic'><img src='"+data.features[0].properties.pic_3+"' height='50'/></a></td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>Pic 4</td>" +
+                        "<td><a class='example-image-link' href='"+data.features[0].properties.pic_4+"' data-lightbox='example-set' data-title='Before Pic'><img src='"+data.features[0].properties.pic_4+"' height='50'/></a></td>" +
                         "</tr>" +
                         "<tr>" +
                         "<td>Created at</td>" +
