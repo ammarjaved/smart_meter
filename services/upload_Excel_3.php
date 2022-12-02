@@ -35,8 +35,8 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
                     if($sheet->getCell('A'. $j)->getValue() != ""){
 
                         $status= "";
-                        //  $so = $sheet->getCell('A'. $j)->getValue();
-                        $so= '8500400';
+                         $so = $sheet->getCell('A'. $j)->getValue();
+                        // $so= '8500400';
 
                         if($sheet->getCell('F'. $j)->getValue() == "TRAS"){
                             $status = "TRAS";
