@@ -126,13 +126,13 @@ else {
 
         <div class="col-lg-5">
 
-            <button class="btn btn-danger " onclick="uploadExcel()">UploadExcel</button>
+            <button class="btn btn-danger " onclick="uploadExcel()">TNB Excel</button>
         </div>
 
 
         <div class="col-lg-7">
 
-            <button class="btn btn-danger " onclick="uploadExcel3()">UploadReguralExcel</button>
+            <button class="btn btn-danger " onclick="uploadExcel3()">Team Excel</button>
         </div>
 
 

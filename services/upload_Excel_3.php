@@ -31,12 +31,12 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 			$t_col = $sheet->getHighestColumn();
 			 $r_row = $sheet->getHighestRow();
 	
-				for ($j=2; $j < $r_row +1; $j++) { 
+				for ($j=9; $j < $r_row +1; $j++) { 
                     if($sheet->getCell('A'. $j)->getValue() != ""){
 
                         $status= "";
-                         $so = $sheet->getCell('A'. $j)->getValue();
-                        // $so= '8500400';
+                        //  $so = $sheet->getCell('A'. $j)->getValue();
+                        $so= '8500400';
 
                         if($sheet->getCell('F'. $j)->getValue() == "TRAS"){
                             $status = "TRAS";
@@ -68,6 +68,10 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
                             // print_r("<pre>");
                             // print_r($fq1);print_r("</pre>");
+                            echo $fq1[0]['latitude'];
+                            echo $fq1[0]['longitude'];
+                            exit();
+
                             
 
                         $query2 = "INSERT INTO tbl_meter(status, old_meter_no, new_meter_no, pic_before, pic_after,  installation_id, latitude, longitude, geom, service_order )
@@ -78,12 +82,12 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
                         '".$sheet->getCell('S'. $j+1)->getValue()."',
                         '".$fq1[0]['installation']."',
                         '".$fq1[0]['latitude']."',
-                        ".$fq1[0]['longitude']."',
+                        '".$fq1[0]['longitude']."',
                         st_geomfromtext('POINT('||".$fq1[0]['latitude']."||' '||".$fq1[0]['longitude']."||')',4326),
                         '$so')";
                         $pg2=pg_query($query2);
                         }
-                      
+                      exit();
                        
                     }
                     
