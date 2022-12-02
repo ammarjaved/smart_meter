@@ -41,7 +41,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
                         if($sheet->getCell('F'. $j)->getValue() == "TRAS"){
                             $status = "TRAS";
                         }else if($sheet->getCell('F'. $j)->getValue() == ""){
-                            $status = "Unsurveyed";
+                            $status = "Installed";
                         }
 
                         
@@ -49,14 +49,14 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
                         $query3= "SELECT count(*) FROM tbl_survey_details WHERE service_order='$so'";
                         $pg3=pg_query($cn, $query3);
                          $fq3 = pg_fetch_all($pg3);
-                        echo $fq3[0]['count'];
+                     //   echo $fq3[0]['count'];
                         
                         if( $fq3[0]['count'] > 0){
-                            echo '<br>';
-                            echo $j;
-                            echo '<br>';
-                            echo $so;
-                            echo '<br>';
+                            // echo '<br>';
+                            // echo $j;
+                            // echo '<br>';
+                            // echo $so;
+                            // echo '<br>';
 
                             $query = "UPDATE tbl_survey_details SET installed_status='$status' WHERE service_order = '$so'";
 
@@ -81,11 +81,11 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
                         '".$fq1[0]['installation']."',
                         '".$fq1[0]['latitude']."',
                         '".$fq1[0]['longitude']."',
-                        st_geomfromtext('POINT('||".$fq1[0]['latitude']."||' '||".$fq1[0]['longitude']."||')',4326),
+                        st_geomfromtext('POINT('||".$fq1[0]['longitude']."||' '||".$fq1[0]['latitude']."||')',4326),
                         '$so')";
                         $pg2=pg_query($query2);
                         }
-                      exit();
+                      //exit();
                        
                     }
                     
