@@ -48,6 +48,7 @@ $sheet = $spreadsheet->getSheet('0');
 							
 					
 					$query = "INSERT INTO tbl_survey_details(installation, service_order, address, latitude, longitude, voltage_level, device_no, meter_type, premise_type, station, area,geom,week_no,month,year,installed_status)
+
 						VALUES ( 
 							'".$sheet->getCell('A'. $j)->getValue()."',
 							'".$sheet->getCell('B'. $j)->getValue()."',
