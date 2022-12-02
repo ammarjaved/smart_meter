@@ -55,11 +55,21 @@ var phase_val="";
         transparent: true
     }, {buffer: 10});
 
+    // site_info = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
+    //     layers: 'cite:site_data',
+    //     format: 'image/png',
+    //     maxZoom: 21,
+    //     transparent: true
+    // }, {buffer: 10});
+
+    var abc='w:2;y:2022;m:12';
     site_info = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
-        layers: 'cite:site_data',
+        layers: 'cite:site_data_new',
         format: 'image/png',
         maxZoom: 21,
-        transparent: true
+        transparent: true,
+        viewparams: abc
+
     }, {buffer: 10});
 
 
@@ -67,7 +77,6 @@ var phase_val="";
 
 
 
-        
     var map = L.map('map_div', {
         center: [3.016603, 101.858382],
         // center: [31.5204, 74.3587],
