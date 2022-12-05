@@ -26,7 +26,7 @@ var not_installed;
 var total_installed;
 var total_tras;
 var layerSwatcher;
-var delayInMilliseconds = 1000; //1 second
+var delayInMilliseconds = 2000; //1 second
 
 
    
@@ -569,8 +569,8 @@ if(month==""){
         }
      });
     }
-    setTimeout(function() {
-        //your code to be executed after 1 second
+    
+  
       
     $.ajax({
         url: "services/get_counts_values.php?week="+week+"&month="+month+"&year="+year ,
@@ -604,7 +604,7 @@ if(month==""){
 
    
 
-    
+    setTimeout(function() {
      params = 'w:'+week+';y:'+year+';m:'+month;
     
      siteInfo(params)
