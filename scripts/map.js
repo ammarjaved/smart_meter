@@ -21,7 +21,14 @@ var linescolor=['white','orange','grey']
 var phase_val="";
 var parems='w:2;y:2022;m:12';
 var site_info;
+var total_order;
+var not_installed;
+var total_installed;
+var total_tras;
 var layerSwatcher;
+var delayInMilliseconds = 1000; //1 second
+
+
    
     var street   = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'),
     dark  = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png'),
@@ -33,50 +40,7 @@ var layerSwatcher;
     
 
 
-    not_installed = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
-        layers: 'cite:not_installed',
-        format: 'image/png',
-        maxZoom: 21,
-        transparent: true,
-        viewparams: parems
-    }, {buffer: 10});
-
-    total_order = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
-        layers: 'cite:total_order',
-        format: 'image/png',
-        maxZoom: 21,
-        transparent: true,
-        viewparams: parems
-    }, {buffer: 10});
-	
-	total_tras = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
-        layers: 'cite:total_tras_new',
-        format: 'image/png',
-        maxZoom: 21,
-        transparent: true,
-        viewparams: parems
-    }, {buffer: 10});
-	total_installed = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
-        layers: 'cite:total_installed_new',
-        format: 'image/png',
-        maxZoom: 21,
-        transparent: true,
-        viewparams: parems
-    }, {buffer: 10});
-
-    // site_info = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
-    //     layers: 'cite:site_data',
-    //     format: 'image/png',
-    //     maxZoom: 21,
-    //     transparent: true
-    // }, {buffer: 10});
-
-    
-    
-
-    
-
-
+   
 
     var map = L.map('map_div', {
         center: [3.016603, 101.858382],
@@ -570,10 +534,7 @@ var baseLayers = {
 };
 
 var overlays = {
-    "Not installed":not_installed,
-    "Total Orders":total_order,
-	"Total Tras":total_tras,
-	"Total installed":total_installed  
+    
    
 };
 
@@ -608,6 +569,9 @@ if(month==""){
         }
      });
     }
+    setTimeout(function() {
+        //your code to be executed after 1 second
+      
     $.ajax({
         url: "services/get_counts_values.php?week="+week+"&month="+month+"&year="+year ,
         type: "GET",
@@ -637,12 +601,14 @@ if(month==""){
     });
 
 
+
    
 
     
      params = 'w:'+week+';y:'+year+';m:'+month;
     
      siteInfo(params)
+    }, delayInMilliseconds);
    
 }
 
@@ -652,6 +618,26 @@ function siteInfo(parm){
         map.removeLayer(site_info);
         layerSwatcher.removeLayer(site_info);
     }
+    if(not_installed){
+        map.removeLayer(not_installed);
+        layerSwatcher.removeLayer(not_installed);
+    }
+
+    if(total_tras){
+        map.removeLayer(total_tras);
+        layerSwatcher.removeLayer(total_tras);
+    }
+
+    if(total_order){
+        map.removeLayer(total_order);
+        layerSwatcher.removeLayer(total_order);
+    }
+
+    if(total_installed){
+        map.removeLayer(total_installed);
+        layerSwatcher.removeLayer(total_installed);
+    }
+
     site_info = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
         layers: 'cite:site_data_new',
         format: 'image/png',
@@ -660,12 +646,50 @@ function siteInfo(parm){
         viewparams: parm
 
     }, {buffer: 10});
+
     
+    not_installed = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
+        layers: 'cite:not_installed',
+        format: 'image/png',
+        maxZoom: 21,
+        transparent: true,
+        viewparams: parm
+    }, {buffer: 10});
+    
+    total_tras = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
+        layers: 'cite:total_tras_new',
+        format: 'image/png',
+        maxZoom: 21,
+        transparent: true,
+        viewparams: parm
+    }, {buffer: 10});
+
+    total_order = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
+        layers: 'cite:total_order',
+        format: 'image/png',
+        maxZoom: 21,
+        transparent: true,
+        viewparams: parm
+    }, {buffer: 10});
+
+    total_installed = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
+        layers: 'cite:total_installed_new',
+        format: 'image/png',
+        maxZoom: 21,
+        transparent: true,
+        viewparams: parm
+    }, {buffer: 10});
+
    // setTimeout(function(){
-        site_info.addTo(map);
+        site_info.addTo(map);     
         site_info.bringToFront();
+        
 
         layerSwatcher.addOverlay(site_info,'site  info')
+        layerSwatcher.addOverlay(not_installed,'Not installed')
+        layerSwatcher.addOverlay(total_tras,'Total TRAS')
+        layerSwatcher.addOverlay(total_order,'Total Orders')
+        layerSwatcher.addOverlay(total_installed,'Total Installed')
  //   },3000)
     
 }
