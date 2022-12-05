@@ -19,8 +19,9 @@ var color2='yellow'
 var color3='blue'
 var linescolor=['white','orange','grey']
 var phase_val="";
-var abc='w:1;y:2022;m:12';
-
+var parems='w:2;y:2022;m:12';
+var site_info;
+var layerSwatcher;
    
     var street   = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'),
     dark  = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png'),
@@ -30,34 +31,14 @@ var abc='w:1;y:2022;m:12';
     });
 	
     
-function fillter_current_week(){
-    
-  
-    $.ajax({
-       url: "services/get_current_week.php",
-       type: "GET",
-       dataType: "json",
-       //data: JSON.stringify(geom,layer.geometry),
-       contentType: "application/json; charset=utf-8",
-       success: function callback(data) {
-        abc = `w:${data.week};y:${data.year};m:${data.month}`;
 
-        map.removeLayer(site_info);
-        map.addLayer(site_info);
-        
-
-
-       }
-    });
-
-}
 
     not_installed = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
         layers: 'cite:not_installed',
         format: 'image/png',
         maxZoom: 21,
         transparent: true,
-        viewparams: abc
+        viewparams: parems
     }, {buffer: 10});
 
     total_order = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
@@ -65,7 +46,7 @@ function fillter_current_week(){
         format: 'image/png',
         maxZoom: 21,
         transparent: true,
-        viewparams: abc
+        viewparams: parems
     }, {buffer: 10});
 	
 	total_tras = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
@@ -73,14 +54,14 @@ function fillter_current_week(){
         format: 'image/png',
         maxZoom: 21,
         transparent: true,
-        viewparams: abc
+        viewparams: parems
     }, {buffer: 10});
 	total_installed = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
         layers: 'cite:total_installed_new',
         format: 'image/png',
         maxZoom: 21,
         transparent: true,
-        viewparams: abc
+        viewparams: parems
     }, {buffer: 10});
 
     // site_info = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
@@ -91,15 +72,7 @@ function fillter_current_week(){
     // }, {buffer: 10});
 
     
-    site_info = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
-        layers: 'cite:site_data_new',
-        format: 'image/png',
-        maxZoom: 21,
-        transparent: true,
-        viewparams: abc
-
-    }, {buffer: 10});
-
+    
 
     
 
@@ -109,7 +82,7 @@ function fillter_current_week(){
         center: [3.016603, 101.858382],
         // center: [31.5204, 74.3587],
         zoom: 10,
-        layers: [googleSat,site_info],
+        layers: [googleSat],
         attributionControl:false
     });
 	
@@ -597,7 +570,6 @@ var baseLayers = {
 };
 
 var overlays = {
-    "Site Info":site_info,
     "Not installed":not_installed,
     "Total Orders":total_order,
 	"Total Tras":total_tras,
@@ -605,7 +577,9 @@ var overlays = {
    
 };
 
-L.control.layers(baseLayers, overlays).addTo(map);
+
+   layerSwatcher=L.control.layers(baseLayers, overlays).addTo(map);
+
 
 
 
@@ -618,11 +592,22 @@ function fillCounts(){
     year = $("#year_select").val()
     week = $("#week_select").val()
 
-    
-    
-    
-   
-    
+if(month==""){
+    $.ajax({
+        url: "services/get_current_week.php",
+        type: "GET",
+        dataType: "json",
+        //data: JSON.stringify(geom,layer.geometry),
+        contentType: "application/json; charset=utf-8",
+        success: function callback(data) {
+        // parems = `w:${data.week};y:${data.year};m:${data.month}`;
+        month=data.month;
+        year=data.year;
+        week=data.week;
+ 
+        }
+     });
+    }
     $.ajax({
         url: "services/get_counts_values.php?week="+week+"&month="+month+"&year="+year ,
         type: "GET",
@@ -651,11 +636,38 @@ function fillCounts(){
            
     });
 
-    
-    // date = 'w:'+week+';y:'+year+';m:'+month;
-    // map.removeLayer(site_info);
-    // map.addLayer(site_info);
+
    
+
+    
+     params = 'w:'+week+';y:'+year+';m:'+month;
+    
+     siteInfo(params)
+   
+}
+
+
+function siteInfo(parm){
+    if(site_info){
+        map.removeLayer(site_info);
+        layerSwatcher.removeLayer(site_info);
+    }
+    site_info = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
+        layers: 'cite:site_data_new',
+        format: 'image/png',
+        maxZoom: 21,
+        transparent: true,
+        viewparams: parm
+
+    }, {buffer: 10});
+    
+   // setTimeout(function(){
+        site_info.addTo(map);
+        site_info.bringToFront();
+
+        layerSwatcher.addOverlay(site_info,'site  info')
+ //   },3000)
+    
 }
 
 function setWeek_er(){
@@ -802,7 +814,7 @@ function clearAll(){
 }
 
 $(document).ready(function(){
-    fillter_current_week();
+   // fillter_current_week();
     fillCounts();
     // getProperties('total_order');
     // getProperties('not_installed');
@@ -812,7 +824,7 @@ $(document).ready(function(){
     typeaheadsearch();
     setWeekAndYear();
     
-    checkpreNext();
+    // checkpreNext();
 
     $('#py_select').append(`<option value="total_order">Total Order</option>`);
     $('#py_select').append(`<option value="not_installed">Not Installed</option>`);
