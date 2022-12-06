@@ -367,6 +367,13 @@ function getProperties(layer1){
                         "<td>Device No</td>" +
                         "<td>"+data.features[0].properties.device_no+"</td>" +
                         "</tr>" +
+
+                        "<tr>" +
+                        "<td>Installation Status</td>" +
+                        "<td>"+data.features[0].properties.installed_status+"</td>" +
+                        "</tr>" +
+
+                        
                         "<tr>" +
                         "<td>Customer Name</td>" +
                         "<td>"+data.features[0].properties.customer_name+"</td>" +
@@ -395,17 +402,12 @@ function getProperties(layer1){
                         "<td>Service Order</td>" +
                         "<td>"+data.features[0].properties.service_order+"</td>" +
                         "</tr>" +
-                        "<tr>" +
-                        "<td>MR Unit</td>" +
-                        "<td>"+data.features[0].properties.mr_unit+"</td>" +
-                        "</tr>" +
+                        
                         "<tr>" +
                         "<td>Installation ID</td>" +
                         "<td>"+data.features[0].properties.installation+"</td>" +
                         "</tr>" +
-                        "<td>Installation Status</td>" +
-                        "<td>"+data.features[0].properties.installed_status+"</td>" +
-                        "</tr>" +
+                        
                         "</table>"
                     newMarker1 = new L.marker([data.features[0].geometry.coordinates[1],data.features[0].geometry.coordinates[0]]).addTo(map).bindPopup(popupContent).openPopup();
                 }
@@ -416,6 +418,13 @@ function getProperties(layer1){
                         "<td>Device No</td>" +
                         "<td>"+data.features[0].properties.device_no+"</td>" +
                         "</tr>" +
+
+                        "<tr>" +
+                        "<td>Installation Status</td>" +
+                        "<td>"+data.features[0].properties.installed_status+"</td>" +
+                        "</tr>" +
+
+
                         "<tr>" +
                         "<td>Customer Name</td>" +
                         "<td>"+data.features[0].properties.customer_name+"</td>" +
@@ -444,17 +453,12 @@ function getProperties(layer1){
                         "<td>Service Order</td>" +
                         "<td>"+data.features[0].properties.service_order+"</td>" +
                         "</tr>" +
-                        "<tr>" +
-                        "<td>MR Unit</td>" +
-                        "<td>"+data.features[0].properties.mr_unit+"</td>" +
-                        "</tr>" +
+                        
                         "<tr>" +
                         "<td>Installation ID</td>" +
                         "<td>"+data.features[0].properties.installation+"</td>" +
                         "</tr>" +
-                        "<td>Installation Status</td>" +
-                        "<td>"+data.features[0].properties.installed_status+"</td>" +
-                        "</tr>" +
+                       
                         "</table>"
                     newMarker1 = new L.marker([data.features[0].geometry.coordinates[1],data.features[0].geometry.coordinates[0]]).addTo(map).bindPopup(popupContent).openPopup();
                 }
@@ -466,6 +470,12 @@ function getProperties(layer1){
                         "<td>Device No</td>" +
                         "<td>"+data.features[0].properties.device_no+"</td>" +
                         "</tr>" +
+
+                        "<tr>" +
+                        "<td>Installation Status</td>" +
+                        "<td>"+data.features[0].properties.installed_status+"</td>" +
+                        "</tr>" +
+
                         "<tr>" +
                         "<td>Customer Name</td>" +
                         "<td>"+data.features[0].properties.customer_name+"</td>" +
@@ -494,17 +504,12 @@ function getProperties(layer1){
                         "<td>Service Order</td>" +
                         "<td>"+data.features[0].properties.service_order+"</td>" +
                         "</tr>" +
-                        "<tr>" +
-                        "<td>MR Unit</td>" +
-                        "<td>"+data.features[0].properties.mr_unit+"</td>" +
-                        "</tr>" +
+                       
                         "<tr>" +
                         "<td>Installation ID</td>" +
                         "<td>"+data.features[0].properties.installation+"</td>" +
                         "</tr>" +
-                        "<td>Installation Status</td>" +
-                        "<td>"+data.features[0].properties.installed_status+"</td>" +
-                        "</tr>" +
+                        
                         "</table>"
                     newMarker1 = new L.marker([data.features[0].geometry.coordinates[1],data.features[0].geometry.coordinates[0]]).addTo(map).bindPopup(popupContent).openPopup();
                 }
@@ -516,6 +521,12 @@ function getProperties(layer1){
                         "<td>Device No</td>" +
                         "<td>"+data.features[0].properties.device_no+"</td>" +
                         "</tr>" +
+
+                        "<tr>" +
+                        "<td>Installation Status</td>" +
+                        "<td>"+data.features[0].properties.installed_status+"</td>" +
+                        "</tr>" +
+
                         "<tr>" +
                         "<td>Customer Name</td>" +
                         "<td>"+data.features[0].properties.customer_name+"</td>" +
@@ -544,17 +555,12 @@ function getProperties(layer1){
                         "<td>Service Order</td>" +
                         "<td>"+data.features[0].properties.service_order+"</td>" +
                         "</tr>" +
-                        "<tr>" +
-                        "<td>MR Unit</td>" +
-                        "<td>"+data.features[0].properties.mr_unit+"</td>" +
-                        "</tr>" +
+                       
                         "<tr>" +
                         "<td>Installation ID</td>" +
                         "<td>"+data.features[0].properties.installation+"</td>" +
                         "</tr>" +
-                        "<td>Installation Status</td>" +
-                        "<td>"+data.features[0].properties.installed_status+"</td>" +
-                        "</tr>" +
+                        
                         "</table>"
                     newMarker1 = new L.marker([data.features[0].geometry.coordinates[1],data.features[0].geometry.coordinates[0]]).addTo(map).bindPopup(popupContent).openPopup();
                 }
