@@ -591,7 +591,7 @@ if(month==""){
 
                  $("#stoday").text(data.remaining[0].count);
 
-                 $("#sweek").text(data.week[0].count);
+                 $("#sweek").text(Number(data.installed[0].count) + Number( data.tras[0].count));
 
 
            
