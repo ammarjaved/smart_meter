@@ -3,9 +3,9 @@ session_start();
 include 'connection.php';
 $output = array();
 
-$sql1 = "select distinct year from tbl_survey_details";
-$sql2 = "select distinct month from tbl_survey_details";
-$sql3 = "select distinct week_no from tbl_survey_details";
+$sql1 = "select distinct year from tbl_survey_details order by year";
+$sql2 = "select distinct month from tbl_survey_details order by month";
+$sql3 = "select distinct week_no from tbl_survey_details order by week_no";
 
 
 

@@ -1025,6 +1025,7 @@ function setWeekAndYear(){
         contentType: "application/json; charset=utf-8",
         success: function callback(data) {
             // var r=JSON.parse(response)
+       
               for(i =0 ; i<data.year.length ; i++){
                 $('#year_select').append(`<option value="${data.year[i].year}">${data.year[i].year}</option>`);
               }
