@@ -47,14 +47,7 @@ var delayInMilliseconds = 2000; //1 second
 
     }, {buffer: 10});
 
-    total_tras_new = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
-        layers: 'cite:total_tras',
-        format: 'image/png',
-        maxZoom: 21,
-        transparent: true,
-        opacity:0
-
-    }, {buffer: 10});
+    
 
 
         total_order_new = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
@@ -75,6 +68,7 @@ var delayInMilliseconds = 2000; //1 second
 
     }, {buffer: 10});
 
+
     not_installed_new = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
         layers: 'cite:not_installed_new',
         format: 'image/png',
@@ -82,6 +76,15 @@ var delayInMilliseconds = 2000; //1 second
         transparent: true,
         opacity:0
         
+    }, {buffer: 10});
+
+    total_tras_new = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
+        layers: 'cite:total_tras',
+        format: 'image/png',
+        maxZoom: 21,
+        transparent: true,
+        opacity:0
+
     }, {buffer: 10});
 
 
