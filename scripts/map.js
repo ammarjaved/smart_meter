@@ -42,9 +42,48 @@ var delayInMilliseconds = 2000; //1 second
         layers: 'cite:site_data',
         format: 'image/png',
         maxZoom: 21,
-        transparent: true
+        transparent: true,
+        opacity:0
 
     }, {buffer: 10});
+
+    total_tras_new = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
+        layers: 'cite:total_tras',
+        format: 'image/png',
+        maxZoom: 21,
+        transparent: true,
+        opacity:0
+
+    }, {buffer: 10});
+
+
+    total_order_new = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
+        layers: 'cite:total_order_new',
+        format: 'image/png',
+        maxZoom: 21,
+        transparent: true,
+        opacity:0
+
+    }, {buffer: 10});
+
+    total_installed_new = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
+        layers: 'cite:total_installed',
+        format: 'image/png',
+        maxZoom: 21,
+        transparent: true,
+        opacity:0
+
+    }, {buffer: 10});
+
+    not_installed_new = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
+        layers: 'cite:not_installed_new',
+        format: 'image/png',
+        maxZoom: 21,
+        transparent: true,
+        opacity:0
+        
+    }, {buffer: 10});
+
 
    
 
@@ -52,7 +91,7 @@ var delayInMilliseconds = 2000; //1 second
         center: [3.016603, 101.858382],
         // center: [31.5204, 74.3587],
         zoom: 10,
-        layers: [site_info_new,googleSat],
+        layers: [total_installed_new,total_order_new,total_tras_new,not_installed_new, site_info_new,googleSat],
         attributionControl:false
     });
 	
@@ -236,19 +275,19 @@ function getProperties(layer1){
     var layer=''
 
     if(layer1=='total_order'){
-        layer=total_order;
+        layer=total_order_new;
     }
     if(layer1=='not_installed'){
-        layer=not_installed;
+        layer=not_installed_new;
     }
     if(layer1=='site_info'){
         layer=site_info_new;
     }
     if(layer1=='total_tras'){
-        layer=total_tras;
+        layer=total_tras_new;
     }
     if(layer1=='total_installed'){
-        layer=total_installed;
+        layer=total_installed_new;
     }
     // if(layer1=='light_panel'){
     //     layer=light_panel;
@@ -292,11 +331,7 @@ function getProperties(layer1){
                         "</tr>" +
                         "<tr>" +
                         "<td>New Meter no</td>" +
-                        "<td>"+data.features[0].new_meter_no+"</td>" +
-                        "</tr>" +
-                        "<tr>" +
-                        "<td>Remarks</td>" +
-                        "<td>"+data.features[0].properties.remarks+"</td>" +
+                        "<td>"+data.features[0].properties.new_meter_no+"</td>" +
                         "</tr>" +
                         "<tr>" +
                         "<td>Pic 1</td>" +

@@ -71,7 +71,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
                                 $pg5=pg_query($cn, $query5);
                              }
                             $query2 = "INSERT INTO tbl_meter(status, old_meter_no, new_meter_no, pic_before, pic_after,pic_3, pic_4,  installation_id, latitude, longitude, geom, service_order )
-                            VALUES('$so',
+                            VALUES('$status',
                             '".$sheet->getCell('N'. $j)->getValue()."',
                             '".$sheet->getCell('P'. $j)->getValue()."',
                             '".$sheet->getCell('S'. $j)->getValue()."',
