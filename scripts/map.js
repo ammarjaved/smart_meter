@@ -57,14 +57,14 @@ var delayInMilliseconds = 2000; //1 second
     }, {buffer: 10});
 
 
-    total_order_new = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
-        layers: 'cite:total_order_new',
-        format: 'image/png',
-        maxZoom: 21,
-        transparent: true,
-        opacity:0
+        total_order_new = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
+            layers: 'cite:total_order_new',
+            format: 'image/png',
+            maxZoom: 21,
+            transparent: true,
+            opacity:0
 
-    }, {buffer: 10});
+        }, {buffer: 10});
 
     total_installed_new = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
         layers: 'cite:total_installed',
@@ -373,7 +373,7 @@ function getProperties(layer1){
                         "<td>"+data.features[0].properties.installed_status+"</td>" +
                         "</tr>" +
 
-                        
+
                         "<tr>" +
                         "<td>Customer Name</td>" +
                         "<td>"+data.features[0].properties.customer_name+"</td>" +
