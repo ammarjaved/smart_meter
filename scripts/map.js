@@ -321,8 +321,12 @@ function getProperties(layer1){
                 if(layer1=='site_info'){
                     var popupContent="<table class='table table-bordered'>" +
                     "<tr>" +
-                        "<td>installation_id</td>" +
+                        "<td>Installation id</td>" +
                         "<td>"+data.features[0].properties.installation_id+"</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>Service Order</td>" +
+                        "<td>"+data.features[0].properties.service_order+"</td>" +
                         "</tr>" +
                         "<tr>" +
                         "<td>Status</td>" +
