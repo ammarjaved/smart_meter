@@ -38,7 +38,13 @@ var delayInMilliseconds = 2000; //1 second
     });
 	
     
+    site_info_new = L.tileLayer.wms("http://121.121.232.54:7090/geoserver/cite/wms", {
+        layers: 'cite:site_data',
+        format: 'image/png',
+        maxZoom: 21,
+        transparent: true
 
+    }, {buffer: 10});
 
    
 
@@ -46,7 +52,7 @@ var delayInMilliseconds = 2000; //1 second
         center: [3.016603, 101.858382],
         // center: [31.5204, 74.3587],
         zoom: 10,
-        layers: [googleSat],
+        layers: [site_info_new,googleSat],
         attributionControl:false
     });
 	
@@ -236,7 +242,7 @@ function getProperties(layer1){
         layer=not_installed;
     }
     if(layer1=='site_info'){
-        layer=site_info;
+        layer=site_info_new;
     }
     if(layer1=='total_tras'){
         layer=total_tras;
